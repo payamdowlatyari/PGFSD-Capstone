@@ -1,0 +1,19 @@
+
+  <h1>Account Page</h1> 
+<h2>Account</h2>
+<table id="accountTable" class="table table-striped" cellspacing="1" width="100%">
+	<thead>
+		<tr>
+			<th>Account Number</th>
+			<th>Account Type</th>
+			<th>Current Balance</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let account of accounts">
+			<td>{{account.accountNumber}}</td>
+			<td>{{account.accountType}}</td>
+			<td><span>$</span> {{account.balance}}</td>
+		</tr>
+	</tbody>
+</table>   

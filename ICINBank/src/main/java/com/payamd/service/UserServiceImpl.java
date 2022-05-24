@@ -1,16 +1,18 @@
 package com.payamd.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.payamd.repository.UserRepository;
 import com.payamd.entity.User;
+import com.payamd.repository.UserRepository;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService{
-	
 	
 	 @Autowired
 	 private UserRepository userRepository;
@@ -36,6 +38,31 @@ public class UserServiceImpl implements UserService{
 		}
 		
 	 @Override
+	    public String addNewUser(User user) {
+	        User n = new User();
+	        n.setFirstname(user.getFirstname());
+	        n.setLastname(user.getLastname());
+	        n.setUsername(user.getUsername());
+	        n.setPassword(user.getPassword());
+	        n.setAddress(user.getAddress());
+	        n.setEmail(user.getEmail());
+	        n.setPhone(user.getPhone());
+	        n.setDob(user.getDob());
+
+	        userRepository.save(n);
+
+//	        Account a = new Account();
+//	        a.setId(user.getId());
+//	        a.setAccountNumber(user.getId() + "1");
+//	        a.setAccountType("Checking");
+//	        a.setBalance(BigDecimal.valueOf(0));
+//	        accountRepository.save(a);
+
+	        return "new account created.";
+	    }
+	 
+	 
+	 	@Override
 		public void updateUser(User user) {
 		  	userRepository.save(user);			
 		}
@@ -50,7 +77,15 @@ public class UserServiceImpl implements UserService{
 				return true;
 			}
 			return false;
-		}	 
+		}
+		
+		@Override
+		public ResponseEntity<Object> login(User user) {
+	        if (authenticate(user.getUsername(), user.getPassword()) != null) {
+	            Map<Object, Object> model = new HashMap<>();
+	            return new ResponseEntity<Object>(model, HttpStatus.OK);
+	        } return new ResponseEntity<Object>(HttpStatus.UNAUTHORIZED);
+	    }
 }
 
 
