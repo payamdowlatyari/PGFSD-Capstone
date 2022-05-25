@@ -2,40 +2,18 @@
   <li ngbNavItem>
     <a ngbNavLink>Login</a>
     <ng-template ngbNavContent>
-      <a class="navbar-brand" routerLink="/login" routerLinkActive="active">Admin Portal</a>
+      <app-login></app-login>
     </ng-template>
   </li>
   <li ngbNavItem>
     <a ngbNavLink>Register</a>
     <ng-template ngbNavContent>
-      <a class="navbar-brand" routerLink="/login" routerLinkActive="active">Admin Portal</a>
     </ng-template>
   </li>
+  <li *ngIf="userIsAuthenticated">
+    <button (click)="onLogout()">Logout</button>
+    <app-account></app-account>
+</li>
 </ul>
 <div [ngbNavOutlet]="nav"></div>
 
-
-<!-- <nav class="navbar navbar-clean">
-    <div class="container-fluid">
-      
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" routerLink="/login" routerLinkActive="active">Admin Portal</a>
-      </div>
-      
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li [style.display]="getDisplay()"><a routerLink="/account" routerLinkActive="active"> Account <span class="sr-only">(current)</span></a></li>
-          <li [style.display]="getDisplay()"><a routerLink="/transfer" routerLinkActive="active"> Transfer <span class="sr-only">(current)</span></a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li [style.display]="getDisplay()"><a (click)="logout()" style="cursor: pointer;">Logout</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav> -->

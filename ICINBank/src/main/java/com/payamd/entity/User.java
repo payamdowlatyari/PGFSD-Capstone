@@ -51,12 +51,13 @@ public class User {
     public User() {
     }
 
-    public User(long id, String lastname, String firstname, String username, String password, String type) {
+    public User(long id, String lastname, String firstname, String username, String password, String currency, String type) {
         this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;
         this.username = username;
         this.password = password;
+        this.currency = currency;
         this.type = type;
     }
 

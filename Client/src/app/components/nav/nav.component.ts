@@ -1,45 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbConfig } from '@ng-bootstrap/ng-bootstrap';
-import { LoginService } from 'src/app/services/login.service';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit, OnDestroy {
 
-  loggedIn: boolean;
+	userIsAuthenticated: boolean = false;
+	userIsAdmin: boolean = false;
+	userId!: number;
+	private authStatusSub!: Subscription;
+	private adminStatusSub!: Subscription;
 
-	constructor(private loginService: LoginService, private router : Router, ngbConfig: NgbConfig) {
-		if(localStorage.getItem('PortalAdminHasLoggedIn') == '') {
-			this.loggedIn = false;
-		} else {
-			this.loggedIn = true;
-		}
-	}
+	constructor(private authService: AuthService, private router : Router) {}
 
-	logout(){
-		this.loginService.logout().subscribe(
-			res => {
-				localStorage.setItem('PortalAdminHasLoggedIn', '');
-			},
-			err => console.log(err)
-			);
-		location.reload();
-		this.router.navigate(['/login']);
-	}
+  ngOnInit(): void {
+	this.userId = this.authService.getUserId();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authStatusSub = this.authService.getAuthStatusListener()
+      .subscribe((isAuthenticated: boolean) => {
+        this.userIsAuthenticated = isAuthenticated;
+        this.userId = this.authService.getUserId();
+      });
+    this.userIsAdmin = this.authService.getIsAdmin();
+    this.adminStatusSub = this.authService.getAdminStatusListener()
+      .subscribe((isAdmin: boolean) => {
+        this.userIsAdmin = isAdmin;
+      });
+  }
 
-	getDisplay() {
-    if(!this.loggedIn){
-      return "none";
-    } else {
-      return "";
+  userInfo() {
+    this.userId = this.authService.getUserId();
+    if (this.userId) {
+      this.router.navigate(['/userInfo', this.userId]);
     }
   }
 
-  ngOnInit(): void {
+  onLogout() {
+    this.authService.logout();
+  }
+
+
+  ngOnDestroy(): void {
+    this.authStatusSub.unsubscribe();
+    this.adminStatusSub.unsubscribe();
   }
 
 }

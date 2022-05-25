@@ -30,9 +30,16 @@ public class HomeController {
 		public String index() {
 			return "index";
 		}
+		
+//		 //    IS AUTHENTICATED
+//	    @PostMapping(path="/login")
+//	    public @ResponseBody boolean isAuthenticate(@RequestBody User user) {
+//	        return userService.authenticate(user);
+//	    }
+		
 
 		
-//	    //    LOGIN
+	    //    LOGIN
 	    @PostMapping(path="/login")
 	    public @ResponseBody ResponseEntity<Object> login(@RequestBody User user) {
 	        return userService.login(user);

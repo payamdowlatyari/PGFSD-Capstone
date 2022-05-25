@@ -21,6 +21,11 @@ public class UserServiceImpl implements UserService{
 		public List<User> get() {
 			return userRepository.findAll();
 		}
+	 
+	 @Override
+		public User getUser(String username) {
+			return userRepository.findByUsername(username);
+		}
 		
 	 @Override
 		public User authenticate(String username, String password) {
@@ -86,6 +91,24 @@ public class UserServiceImpl implements UserService{
 	            return new ResponseEntity<Object>(model, HttpStatus.OK);
 	        } return new ResponseEntity<Object>(HttpStatus.UNAUTHORIZED);
 	    }
+		
+//		@Override
+//		public Boolean logoutUser(HttpServletRequest request, HttpServletResponse response) {
+//			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//			SecurityContextLogoutHandler handler = null;
+//			if (auth != null) {
+//				handler = new SecurityContextLogoutHandler();
+//				handler.logout(request, response, auth);
+//			}
+//			return handler.isInvalidateHttpSession();
+//		}
+
+		@Override
+		public User getUserById(Long id) {
+			
+				return userRepository.getById(id);
+		
+		}
 }
 
 
