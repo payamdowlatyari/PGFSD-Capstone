@@ -62,6 +62,14 @@ PRIMARY KEY(id),
 FOREIGN KEY(id) REFERENCES user(id)
 );
 
+CREATE TABLE admin(
+id BIGINT (10) NOT NULL AUTO_INCREMENT,
+username VARCHAR(15) NOT NULL,
+password VARCHAR(15) NOT NULL,
+PRIMARY KEY(id
+);
+
+
 INSERT INTO user VALUES ('101','Payam','Dowlatyari','pdowlatyari@gmail.com','9165478918','2417 Castro Way','admin','admin','admin','USD','1985-09-07');
 INSERT INTO user VALUES ('102','Mina','Fanaian','minafanaian@gmail.com','9169126468','33 Tehama St','user','user','user','USD','1996-06-13');
 
@@ -70,3 +78,5 @@ INSERT INTO account VALUES('102','1002','Checking','3000');
 
 INSERT INTO transfer VALUES('1101','101','1001','1002','100','2022-05-05');
 INSERT INTO transfer VALUES('1102','102','1002','1001','200','2022-06-05');
+
+INSERT INTO admin VALUES('admin','admin');

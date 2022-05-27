@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <span id="title">
         <a routerLink="/" routerLinkActive="active">ICIN Bank</a>
       </span>
@@ -7,36 +7,31 @@
             <li [style.display]="getDisplay()"><a routerLink="/user" routerLinkActive="active"> Users</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a (click)="logout()">Logout</a></li>
+            <li><a [style.display]="getDisplay()" (click)="logout()">Logout</a></li>
           </ul>
         </nav>
         <div class="container" [hidden]="!loggedIn">
-
         <p>Welcome to your ICIN Portal!</p>
           <router-outlet></router-outlet>
         </div>
-        <div [hidden]="loggedIn" class="container">
-    
-      <form class="row g-3" (ngSubmit)="onSubmit()">  
-        <div class="col-auto">   
-
-        <h2 class="clean-font">login</h2>
+        <div [hidden]="loggedIn" class="container" id="login-signup">
+            <div class="row g-3">   
+                <div class="col-sm-9 col-md-6 col-lg-3"> 
+        <form (ngSubmit)="onSubmit()">  
+        <h2 class="clean-font">login</h2> <br/>
           <input type="text" class="form-control-plaintext" name="username" [(ngModel)]="username" placeholder="Username" name="username" required autofocus="" />
         <br/>
-
         <input type="password" class="form-control-plaintext" name="password" [(ngModel)]="password" placeholder="Password" required /> 
-        <div class="form-group">     
         <br/>
-        <label>
-           <input type="checkbox" name="remember-me" id="remember-me" />&nbsp;<span class="clean-font">Remember me</span>
-        </label>
+          <button class="btn btn-primary btn-sm" type="submit">Login</button>   
+        </form>
+                </div>
+                <div class="col-sm-1 col-md-2 col-lg-3"></div> 
+        <div class="col-sm-12 col-md-8 col-lg-4"> 
+            <h2 class="clean-font">or Sign up</h2>
+      <app-signup></app-signup>
         </div>
-          <button class="btn btn-primary btn-block mb-3" type="submit">Login</button>   
-          
       </div>
-      <a id="signup" href="">Register</a>
-      </form>
-      
 </div> 
 <app-footer></app-footer>
 

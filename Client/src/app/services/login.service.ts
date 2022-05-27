@@ -7,6 +7,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LoginService {
+  registrationUser(value: any) {
+    throw new Error('Method not implemented.');
+  }
+  authenticateUser(loginValue: { username: any; password: any; }) {
+    throw new Error('Method not implemented.');
+  }
 
 
   private apiServerUrl = environment.apiBaseUrl;
@@ -14,6 +20,7 @@ export class LoginService {
   user: any;
   httpService: any;
   token: any;
+  data: any;
 
   constructor(private http: HttpClient) { }
 
@@ -51,14 +58,11 @@ export class LoginService {
      return this.http.get(`${this.apiServerUrl}/api/logout`, { withCredentials: true });
    }
 
-  // logout() {
-  //   let url = `${this.apiServerUrl}/api/logout`;
-  //   return this.http.get(url, { withCredentials: true });
-  // }
-
-  // logoutUser(): any {
-  //   return this.httpClient.request('post', 'http://localhost:8080/logout', {body: {}, withCredentials: true, responseType: 'text' });
-  // }
+   signup(data: any){
+    return this.http.post<string>(`${this.apiServerUrl}/api/signup`,
+      {username: data.username, firstName: data.firstname, password: data.password,
+      lastName: data.lastname}, { withCredentials: true });
+  }
 
 
 }

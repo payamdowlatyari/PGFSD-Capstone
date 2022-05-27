@@ -54,28 +54,28 @@ public class HomeController {
 //	        return userService.authenticate(user);
 //	    }
 		
-//		@GetMapping("/signup")
-//	    public String signup(Model model) {
-//	        User user = new User();
-//	        model.addAttribute("user", user);
-//	        return "signup";
-//	    }
-//		
-//		 @PostMapping("/signup")
-//		    public String signupPost(@ModelAttribute("user") User user, Model model) {
-//
-//		        if (userService.userExists(user.getUsername())) {
-//
-//		        	model.addAttribute("usernameExists", true);
-//		        	return "signup";
-//		        }    
-//		         else 
-//		        {
-//		            userService.addNewUser(user);
-//
-//		            return "redirect:/";
-//		        }
-//		    }
+		@GetMapping("/signup")
+	    public String signup(Model model) {
+	        User user = new User();
+	        model.addAttribute("user", user);
+	        return "signup";
+	    }
+		
+		 @PostMapping("/signup")
+		    public String signupPost(@ModelAttribute("user") User user, Model model) {
+
+		        if (userService.userExists(user.getUsername())) {
+
+		        	model.addAttribute("usernameExists", true);
+		        	return "signup";
+		        }    
+		         else 
+		        {
+		            userService.addNewUser(user);
+
+		            return "redirect:/";
+		        }
+		    }
 		
 		
 	    //    LOGIN
