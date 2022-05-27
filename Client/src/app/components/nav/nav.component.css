@@ -1,0 +1,14 @@
+#title a{
+    font-size: 2em;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #222;
+    font-weight: 900;
+}
+
+.nav a{
+    text-decoration: none;
+    padding: 5px;
+    color: steelblue;
+    cursor: pointer;
+}

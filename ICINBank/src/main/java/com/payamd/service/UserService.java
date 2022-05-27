@@ -24,7 +24,9 @@ public interface UserService {
 	
 	boolean isAdmin(User user);
 	
+	boolean userExists(String username);
+	
 //	Boolean logoutUser(HttpServletRequest request, HttpServletResponse response);
 	
-	ResponseEntity<Object> login(User user);
+//	ResponseEntity<Object> login(User user);
 }

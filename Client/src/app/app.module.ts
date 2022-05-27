@@ -15,6 +15,7 @@ import { LoginService } from './services/login.service';
 import { FormsModule } from '@angular/forms';
 import { AccountComponent } from './components/account/account.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavComponent,
     FooterComponent,
     LoginComponent,
-    AccountComponent
+    AccountComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

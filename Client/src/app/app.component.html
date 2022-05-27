@@ -1,12 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <span id="title">
+        <a routerLink="/" routerLinkActive="active">ICIN Bank</a>
+      </span>
+        <ul class="nav navbar-nav" [hidden]="!loggedIn" >
+            <li [style.display]="getDisplay()"><a routerLink="/account" routerLinkActive="active"> Accounts</a></li>
+            <li [style.display]="getDisplay()"><a routerLink="/user" routerLinkActive="active"> Users</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a (click)="logout()">Logout</a></li>
+          </ul>
+        </nav>
+        <div class="container" [hidden]="!loggedIn">
 
+        <p>Welcome to your ICIN Portal!</p>
+          <router-outlet></router-outlet>
+        </div>
+        <div [hidden]="loggedIn" class="container">
+    
+      <form class="row g-3" (ngSubmit)="onSubmit()">  
+        <div class="col-auto">   
 
-<div class="container">
-    <div class="row">
-     
-      <h1 id="title">ICIN Bank</h1>
-        <main>
-            <app-dashboard></app-dashboard>
-            <router-outlet></router-outlet>
-        </main>
+        <h2 class="clean-font">login</h2>
+          <input type="text" class="form-control-plaintext" name="username" [(ngModel)]="username" placeholder="Username" name="username" required autofocus="" />
+        <br/>
+
+        <input type="password" class="form-control-plaintext" name="password" [(ngModel)]="password" placeholder="Password" required /> 
+        <div class="form-group">     
+        <br/>
+        <label>
+           <input type="checkbox" name="remember-me" id="remember-me" />&nbsp;<span class="clean-font">Remember me</span>
+        </label>
+        </div>
+          <button class="btn btn-primary btn-block mb-3" type="submit">Login</button>   
+          
       </div>
-</div>
+      <a id="signup" href="">Register</a>
+      </form>
+      
+</div> 
+<app-footer></app-footer>
+
+
+
+
+  

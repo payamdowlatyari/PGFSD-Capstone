@@ -9,7 +9,7 @@ import {NgbConfig} from '@ng-bootstrap/ng-bootstrap';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(ngbConfig: NgbConfig) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

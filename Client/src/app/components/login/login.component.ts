@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/services/auth.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -12,60 +10,40 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  loggedIn: boolean;
-  username: string = '';
-  password: string = '';
+  // loggedIn: boolean;
+  // username: string = '';
+  // password: string = '';
+  // form: FormGroup | undefined;
+  // authStatusSub: Subscription | undefined;
+  // isLoading: boolean | undefined;
+  // userId: number | undefined;
 
-	constructor (private loginService: LoginService) {
-    if(localStorage.getItem('PortalAdminHasLoggedIn') == '' || localStorage.getItem('PortalAdminHasLoggedIn') == null) {
-      this.loggedIn = false;
-    } else {
-      this.loggedIn = true;
-    }
-  }
+  // constructor (private loginService: LoginService) {
+  //   if(localStorage.getItem('PortalAdminHasLoggedIn') == '' || localStorage.getItem('PortalAdminHasLoggedIn') == null) {
+  //     this.loggedIn = false;
+  //   } else {
+  //     this.loggedIn = true;
+  //   }
+  // }
   
-  onSubmit() {
-  	this.loginService.sendCredential(this.username, this.password).subscribe(
-      _res => {
-        this.loggedIn=true;
-        localStorage.setItem('PortalAdminHasLoggedIn', 'true');
-        location.reload();
-      },
-      err => console.log(err)
-    );
-  }
-
-  ngOnInit() {}
-
-  // form!: FormGroup;
-  // isLoading = false;
-  // private authStatusSub!: Subscription;
-
-
-  // constructor(public authService: AuthService) { }
-
-  // ngOnInit(): void {
-  //   this.form = new FormGroup({
-  //     username: new FormControl(null, [Validators.required]),
-  //     password: new FormControl(null, [Validators.required])
-  //   });
-  //   this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
-  //     authStatus => {
-  //       this.isLoading = false;
-  //     }
+  // onSubmit() {
+  // 	this.loginService.sendCredential(this.username, this.password).subscribe(
+  //     res => {
+  //       this.loggedIn=true;
+  //       localStorage.setItem('PortalAdminHasLoggedIn', 'true');
+  //       location.reload();
+  //     },
+  //     err => console.log(err)
   //   );
   // }
 
-  // onLogin() {
-  //   if(this.form.invalid) {
-  //     return;
+  // getDisplay() {
+  //   if(!this.loggedIn){
+  //     return "none";
+  //   } else {
+  //     return "";
   //   }
-  //   this.isLoading = true;
-  //   this.authService.login(this.form.value.username, this.form.value.password);
   // }
 
-  // ngOnDestroy(): void {
-  //   this.authStatusSub.unsubscribe();
-  // }
-
+  ngOnInit() {}
 }

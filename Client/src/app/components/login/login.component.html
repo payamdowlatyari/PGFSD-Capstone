@@ -1,24 +1,23 @@
-<div class="container">
-  <form class="row g-3" (ngSubmit)="onSubmit()" [hidden]="loggedIn">  
-    <div class="col-auto">   
-    <h2 class="clean-font">login</h2>
-
-    <input type="text" class="form-control-plaintext" name="username" [(ngModel)]="username" placeholder="Username" name="username" required autofocus="" />
-    <br />
-
-    <input type="password" class="form-control-plaintext" name="password" [(ngModel)]="password" placeholder="Password" required /> 
-    <div class="form-group">     
-    <br/>
-    <label >
-       <input type="checkbox" name="remember-me" id="remember-me" />&nbsp;<span class="clean-font">Remember me</span>
-    </label>
+<!-- <div class="container">
+  <div [hidden]="loggedIn">
+    <form class="row g-3" (ngSubmit)="onSubmit()" [hidden]="loggedIn">  
+      <div class="col-auto">   
+      <h2 class="clean-font">login</h2>
+        <input type="text" class="form-control-plaintext" name="username" [(ngModel)]="username" placeholder="Username" name="username" required autofocus="" />
+      <br/>
+      <input type="password" class="form-control-plaintext" name="password" [(ngModel)]="password" placeholder="Password" required /> 
+      <div class="form-group">     
+      <br/>
+      <label>
+         <input type="checkbox" name="remember-me" id="remember-me" />&nbsp;<span class="clean-font">Remember me</span>
+      </label>
+      </div>
+        <button class="btn btn-primary btn-block mb-3" type="submit">Login</button>   
     </div>
-    <button class="btn btn-primary btn-block mb-3" type="submit">Login</button>   
+    </form>
+    </div>
+    <div [hidden]="!loggedIn">
+      <p>Welcome to your ICIN Portal!</p>
   </div>
-  </form>
- 
-  <div [hidden]="!loggedIn">
-    <h2>Welcome to Admin Portal!</h2>
-  </div>
-</div> 
+</div>  -->
 

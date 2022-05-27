@@ -8,6 +8,11 @@ import { NavComponent } from './components/nav/nav.component';
 import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
+  {
+    path:'',
+    redirectTo: '/login',
+    pathMatch:'full'
+    },
   { path: 'user', component: UserComponent },
   { path: 'account', component: AccountComponent },
   { path: 'dashboard', component: DashboardComponent },

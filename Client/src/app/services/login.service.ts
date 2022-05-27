@@ -18,7 +18,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   sendCredential(username: string, password: string) {
-    let url = this.apiServerUrl;
+    let url = `${this.apiServerUrl}/api/login`;
     let params = 'username='+username+'&password='+password;
     let headers = new HttpHeaders(
     {
@@ -27,8 +27,6 @@ export class LoginService {
     });
     return this.http.post(url, params, {headers: headers, withCredentials : true});
   }
-
-  
 
   getToken(user: any): Observable<any> {
     return this.httpService.post(
@@ -50,7 +48,17 @@ export class LoginService {
   }
   
   logout() {
-     return this.http.get(`${this.apiServerUrl}/logout`, { withCredentials: true });
+     return this.http.get(`${this.apiServerUrl}/api/logout`, { withCredentials: true });
    }
+
+  // logout() {
+  //   let url = `${this.apiServerUrl}/api/logout`;
+  //   return this.http.get(url, { withCredentials: true });
+  // }
+
+  // logoutUser(): any {
+  //   return this.httpClient.request('post', 'http://localhost:8080/logout', {body: {}, withCredentials: true, responseType: 'text' });
+  // }
+
 
 }

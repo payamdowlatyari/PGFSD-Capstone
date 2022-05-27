@@ -19,7 +19,7 @@ import com.payamd.service.UserService;
 
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/user")
 @CrossOrigin(origins = "http://localhost:8080")
 public class UserController {
 

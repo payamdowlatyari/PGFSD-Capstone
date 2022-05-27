@@ -84,13 +84,15 @@ public class UserServiceImpl implements UserService{
 			return false;
 		}
 		
-		@Override
-		public ResponseEntity<Object> login(User user) {
-	        if (authenticate(user.getUsername(), user.getPassword()) != null) {
-	            Map<Object, Object> model = new HashMap<>();
-	            return new ResponseEntity<Object>(model, HttpStatus.OK);
-	        } return new ResponseEntity<Object>(HttpStatus.UNAUTHORIZED);
-	    }
+//		@Override
+//		public ResponseEntity<Object> login(String username, String password) {
+//			
+//			User user
+//	        if (authenticate(user.getUsername(), user.getPassword()) != null) {
+//	            Map<Object, Object> model = new HashMap<>();
+//	            return new ResponseEntity<Object>(model, HttpStatus.OK);
+//	        } return new ResponseEntity<Object>(HttpStatus.UNAUTHORIZED);
+//	    }
 		
 //		@Override
 //		public Boolean logoutUser(HttpServletRequest request, HttpServletResponse response) {
@@ -108,6 +110,20 @@ public class UserServiceImpl implements UserService{
 			
 				return userRepository.getById(id);
 		
+		}
+
+		@Override
+		public boolean userExists(String username) {
+			List <User> user = userRepository.findAll();
+			
+			for(User item: user)
+				
+			 if (item.getEmail().equals(username)) {	
+				 
+		            return true;
+				 }   
+			
+				return false;
 		}
 }
 
