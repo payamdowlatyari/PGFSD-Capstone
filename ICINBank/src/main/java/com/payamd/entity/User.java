@@ -148,5 +148,19 @@ public class User {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
+	
+	@Override
+    public String toString() {
+        return "User[" +
+                "id=" + id +
+                ", username='" + username + 
+                ", password='" + password + 
+                ", firstname='" + firstname + 
+                ", lastname='" + lastname + 
+                ", email='" + email + 
+                ", phone='" + phone + 
+                ", currency=" + currency +
+                ']';
+    }
 
 }

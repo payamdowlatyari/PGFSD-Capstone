@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.payamd.entity.Message;
 import com.payamd.entity.User;
 import com.payamd.service.UserService;
 
@@ -26,29 +28,47 @@ public class UserController {
 	@Autowired
 	private UserService userService; 
 	
-	   @GetMapping(value = "/list")
+	   @GetMapping("/list")
 	    public ResponseEntity<List<User>> getUserList() {
 	        List<User> users =  userService.get();
 	        return new ResponseEntity<>(users, HttpStatus.OK);
 	   }
 	   
-	   @GetMapping("/{id}")
-		public ResponseEntity<User> getUserById(@PathVariable Long id) {
-			User user = userService.getUserById(id);
-			User frontUser = new User(user.getId(), user.getLastname(), user.getFirstname(), 
-					user.getUsername(), user.getPassword(),user.getCurrency(), user.getType());
-			return ResponseEntity.ok().body(frontUser);
-	  }
+	   @GetMapping("/exists/{username}/{password}")
+		public Message checkUserByCredentials(@PathVariable String username, @PathVariable String password) {
+			Message message = new Message(this.userService.exists(username, password));
+			return message;
+		}
 	   
-	   @GetMapping("/isAdmin/{id}")
-		public ResponseEntity<Boolean> hasAdminPrivilege(@PathVariable Long id) {
-		   	User user = userService.getUserById(id);
-			return ResponseEntity.ok().body(userService.isAdmin(user));
-		} 
+	   @GetMapping("/username/{username}")
+		public User getUserByUsername(@PathVariable String username) {
+			return this.userService.getUser(username);
+		}
+	   
+//	   @PostMapping("/{username}")
+//		public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+//		   User user = this.userService.getUser(username);
+////			return this.usersService.getUserViaUserId(loginUserId);
+//		   return new ResponseEntity<User>(user, HttpStatus.OK);
+//
+//		}
+			
+	  
+	   @GetMapping("/update/password/{newPassword}/{accountNumber}")
+		public Message updateLoginPassword(@PathVariable String newPassword, @PathVariable String accountNumber) {
+			Message message = new Message(this.userService.update(newPassword, accountNumber));
+			return message;
+		}
+	   
+	   @PostMapping("/create")
+		public Message createUser(@RequestBody User user) {
+			return new Message(this.userService.create(user));
+			
+		}
 	   
 	   @PostMapping("/signup")
 		public ResponseEntity<?> signupUser(@RequestBody String firstname, String lastname, String username, String password) {
-			URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/user/signup").toUriString());
+			URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/user/signup").toUriString());
 			
 		   User savedUser = userService.getUser(username);
 			if (savedUser != null) {
@@ -57,11 +77,5 @@ public class UserController {
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Username already exists!"));
 			}	
 		}
-	   
-//	   @GetMapping("/logout")
-//		public ResponseEntity<Boolean> logout(HttpServletRequest request, HttpServletResponse response) {
-//			return ResponseEntity.ok().body(userService.logoutUser(request, response));
-//		}	
-	   
 	  
 }

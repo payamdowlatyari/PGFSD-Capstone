@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 
 import com.payamd.entity.Account;
-import com.payamd.entity.User;
 import com.payamd.service.AccountService;
 
 @RestController
@@ -27,24 +26,24 @@ public class AccountController {
 	@Autowired
 	private AccountService accountService;
 	
-	@GetMapping(path="/list")
+	@GetMapping("/list")
     public ResponseEntity <List<Account>> getAccountsList() {       
         List<Account> accounts =  accountService.get();
         return new ResponseEntity<>(accounts, HttpStatus.OK);
     }
 	
-//	@PostMapping(path="/{id}")
-//    public @ResponseBody String createNewAccount(@RequestBody Account account, @PathVariable long id) {
-//        return accountService.createNewAccount(account, id);
-//    }
-//
-//    @PutMapping(path="/{id}")
-//    public @ResponseBody String updateAccount(@PathVariable long id, @RequestBody Account account) {
-//        return accountService.updateAccount(account, id);
-//    }
-//
-//    @DeleteMapping(path = "/{id}")
-//    public @ResponseBody String deleteAccount(@PathVariable long id) {
-//        return accountService.deleteAccount(id);
-//    }
+	@PostMapping("/{id}")
+    public @ResponseBody String createNewAccount(@RequestBody Account account, @PathVariable long id) {
+        return accountService.createNewAccount(account, id);
+    }
+
+    @PutMapping("/{id}")
+    public @ResponseBody String updateAccount(@PathVariable long id, @RequestBody Account account) {
+        return accountService.updateAccount(account, id);
+    }
+
+    @DeleteMapping("/{id}")
+    public @ResponseBody String deleteAccount(@PathVariable long id) {
+        return accountService.deleteAccount(id);
+    }
 }

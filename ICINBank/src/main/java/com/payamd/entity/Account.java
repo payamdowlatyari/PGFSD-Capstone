@@ -37,6 +37,13 @@ public class Account {
         this.balance = balance;
         this.accountType = accountType;
     }
+    
+    public Account(long id, BigDecimal balance, String accountType) {
+        this.id = id;
+        this.accountNumber = "10" + id;
+        this.balance = balance;
+        this.accountType = accountType;
+    }
 
     public Account(String accountNumber, BigDecimal balance, String accountType) {
 
@@ -75,5 +82,11 @@ public class Account {
 
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
+	}
+	
+	@Override
+	public String toString() {
+		return "Account [accountNumber=" + accountNumber + 
+				 ", balance=" + balance + ", accountType=" + accountType + "]";
 	}
 }

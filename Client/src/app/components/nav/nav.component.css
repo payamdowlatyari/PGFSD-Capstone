@@ -1,14 +1,15 @@
 #title a{
+    padding-left: 1em;
     font-size: 2em;
     text-decoration: none;
     text-transform: uppercase;
-    color: #222;
+    color: #eee;
     font-weight: 900;
 }
 
 .nav a{
     text-decoration: none;
-    padding: 5px;
-    color: steelblue;
+    padding: 1em;
+    color: cadetblue;
     cursor: pointer;
 }

@@ -6,4 +6,5 @@ import com.payamd.entity.Transfer;
 public interface TransferService {
 
 	List<Transfer> get();
+	String create(Transfer transfer, long id);
 }

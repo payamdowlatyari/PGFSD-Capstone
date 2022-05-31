@@ -17,4 +17,8 @@ export class AccountService {
     return this.http.get<Account[]>(`${this.apiServerUrl}/account/list`);
   }
 
+  public getAccountById(id: string): Observable <Account> {
+    return this.http.get<Account>(`${this.apiServerUrl}/account/${id}`);
+  }
+
 }

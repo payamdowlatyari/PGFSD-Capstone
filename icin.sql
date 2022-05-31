@@ -53,7 +53,7 @@ FOREIGN KEY(tid) REFERENCES transfer(tid)
 
 CREATE TABLE checkBookRequest(
 id BIGINT(10) NOT NULL,
-req_status VARCHAR(10),
+req_status INT(1),
 acc_no VARCHAR(10),
 acc_type VARCHAR(10),
 no_pages VARCHAR(10),
@@ -72,6 +72,8 @@ PRIMARY KEY(id
 
 INSERT INTO user VALUES ('101','Payam','Dowlatyari','pdowlatyari@gmail.com','9165478918','2417 Castro Way','admin','admin','admin','USD','1985-09-07');
 INSERT INTO user VALUES ('102','Mina','Fanaian','minafanaian@gmail.com','9169126468','33 Tehama St','user','user','user','USD','1996-06-13');
+INSERT INTO user VALUES ('103','Sam','Black','sam@gmail.com','1234567890','222 Blue St','sam123','sam123','sam123','USD','1999-09-27');
+
 
 INSERT INTO account VALUES('101','1001','Checking','2000');
 INSERT INTO account VALUES('102','1002','Checking','3000');

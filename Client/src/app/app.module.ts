@@ -16,6 +16,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountComponent } from './components/account/account.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './components/signup/signup.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { HomeComponent } from './components/home/home.component';
+import { CheckComponent } from './components/check/check.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { TransferComponent } from './components/transfer/transfer.component';
+import { TransactionComponent } from './components/transaction/transaction.component';
+import { CheckManagementComponent } from './components/check-management/check-management.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +35,16 @@ import { SignupComponent } from './components/signup/signup.component';
     FooterComponent,
     LoginComponent,
     AccountComponent,
-    SignupComponent
+    SignupComponent,
+    AdminComponent,
+    HomeComponent,
+    CheckComponent,
+    ProfileComponent,
+    TransferComponent,
+    TransactionComponent,
+    CheckManagementComponent,
+    AdminLoginComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

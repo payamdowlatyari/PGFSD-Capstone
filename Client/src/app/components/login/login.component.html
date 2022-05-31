@@ -1,23 +1,91 @@
-<!-- <div class="container">
-  <div [hidden]="loggedIn">
-    <form class="row g-3" (ngSubmit)="onSubmit()" [hidden]="loggedIn">  
-      <div class="col-auto">   
-      <h2 class="clean-font">login</h2>
-        <input type="text" class="form-control-plaintext" name="username" [(ngModel)]="username" placeholder="Username" name="username" required autofocus="" />
-      <br/>
-      <input type="password" class="form-control-plaintext" name="password" [(ngModel)]="password" placeholder="Password" required /> 
-      <div class="form-group">     
-      <br/>
-      <label>
-         <input type="checkbox" name="remember-me" id="remember-me" />&nbsp;<span class="clean-font">Remember me</span>
-      </label>
-      </div>
-        <button class="btn btn-primary btn-block mb-3" type="submit">Login</button>   
-    </div>
-    </form>
-    </div>
-    <div [hidden]="!loggedIn">
-      <p>Welcome to your ICIN Portal!</p>
-  </div>
-</div>  -->
+<!-- <div [hidden]="loggedIn || dashboard" class="container-fluid" id="login-signup">
+    <div class="row g-3">   
+        <div class="col-sm-9 col-md-6 col-lg-3"> 
+            <form (ngSubmit)="onSubmit()">  
 
+                <h2 class="clean-font">login</h2> 
+
+                    <label>Username</label>
+                    <input type="text" class="form-control-plaintext" name="username" [(ngModel)]="username" placeholder="Username" name="username" required autofocus="" />
+                    <br/>
+
+                    <label>Password</label>
+                    <input type="password" class="form-control-plaintext" name="password" [(ngModel)]="password" placeholder="Password" required /> 
+                    <br/>
+
+                    <button class="btn btn-primary btn-sm" type="submit">Login</button>  
+              </form>
+          </div>
+
+          <div class="col-sm-1 col-md-2 col-lg-3">
+              <h2 class="clean-font" id="or">or</h2>
+          </div> 
+
+          <div class="col-sm-12 col-md-8 col-lg-4"> 
+              <h2 class="clean-font">Sign up</h2>
+                    <app-signup></app-signup>
+          </div>
+
+          <div class="col-sm-12 col-md-8 col-lg-4"> 
+                    <app-admin></app-admin>
+          </div>
+      </div>
+</div> 
+ -->
+
+ <div class="container">
+  <div class="row py-5 mt-4 align-items-center">
+      <div class="col-md-6 pr-lg-6 mb-5 mb-md-0 text-center">
+          <h1 class="title">ICIN Bank</h1>
+      </div>
+
+      <div class="col-md-6 col-lg-5 ml-auto">
+          <form action="#">
+              <div class="row">
+                  <div class="col-lg-12 text-left mb-2">
+                      <h2>Login</h2>
+                  </div>
+                  <div class="input-group col-lg-12 mb-2">
+                      <!-- <div class="input-group-prepend">
+                          <span class="input-group-text bg-white px-4 border-md border-right-0">
+                              <i class="fas fa-id-card-alt text-muted"></i>
+                          </span>
+                      </div> -->
+                      <input [(ngModel)]="username" id="username" type="text" name="username" placeholder="User Login Id"
+                          class="form-control bg-white border-left-0 border-md" required>
+                  </div>
+
+                  <div class="input-group col-lg-12 mb-2">
+                      <!-- <div class="input-group-prepend">
+                          <span class="input-group-text bg-white px-4 border-md border-right-0">
+                              <i class="fa fa-lock text-muted"></i>
+                          </span>
+                      </div> -->
+                      <input [(ngModel)]="password" id="password" type="password" name="password" placeholder="Login Password"
+                          class="form-control bg-white border-left-0 border-md" required>
+                  </div>
+
+                  <div class="form-group col-lg-12 mx-auto mb-0">
+                      <a (click)="loginUser()" class="btn btn-primary btn-sm">
+                          <span class="font-weight-bold text-white">Login</span>
+                      </a>
+                  </div>
+
+                  <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                      <div class="border-bottom w-100 ml-5"></div>
+                      <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+                      <div class="border-bottom w-100 mr-5"></div>
+                  </div>
+
+                  <div class="text-center w-100">
+                      <p class="text-muted font-weight-bold">Don't have an account?<br>
+                          <a routerLink="/signup"
+                              class="signup-login">Sign up now</a></p>
+                  </div>
+
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+<app-footer></app-footer>

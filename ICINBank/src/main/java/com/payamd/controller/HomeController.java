@@ -20,8 +20,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletResponse;
 
-
+import com.payamd.entity.Admin;
 import com.payamd.entity.User;
+import com.payamd.service.AdminService;
 import com.payamd.service.UserService;
 
 @RestController
@@ -31,6 +32,9 @@ public class HomeController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	AdminService adminService; 
 	
 		@GetMapping("/")
 		public String home() {
@@ -43,39 +47,39 @@ public class HomeController {
 		}
 		
 		@GetMapping("/logout")
-	    public ResponseEntity logout() 
+	    public ResponseEntity<String> logout() 
 	    {
 		 return ResponseEntity.ok("login");
 	    }
 		
-//		 //    IS AUTHENTICATED
-//	    @PostMapping(path="/login")
-//	    public @ResponseBody boolean isAuthenticate(@RequestBody User user) {
-//	        return userService.authenticate(user);
-//	    }
-		
-		@GetMapping("/signup")
-	    public String signup(Model model) {
-	        User user = new User();
-	        model.addAttribute("user", user);
-	        return "signup";
+		@GetMapping("/adminlogout")
+	    public ResponseEntity<String> adminLogout() 
+	    {
+		 return ResponseEntity.ok("login");
 	    }
 		
-		 @PostMapping("/signup")
-		    public String signupPost(@ModelAttribute("user") User user, Model model) {
-
-		        if (userService.userExists(user.getUsername())) {
-
-		        	model.addAttribute("usernameExists", true);
-		        	return "signup";
-		        }    
-		         else 
-		        {
-		            userService.addNewUser(user);
-
-		            return "redirect:/";
-		        }
-		    }
+//		@GetMapping("/signup")
+//	    public String signup(Model model) {
+//	        User user = new User();
+//	        model.addAttribute("user", user);
+//	        return "signup";
+//	    }
+		
+//		 @PostMapping("/signup")
+//		    public ResponseEntity signupPost(@ModelAttribute("user") User user) {
+//
+//		        if (userService.) {
+//
+//		        	
+//		        	 return ResponseEntity.ok("signup");
+//		        }    
+//		         else 
+//		        {
+//		            userService.create(user);
+//
+//		            return ResponseEntity.ok("redirect:/"); ;
+//		        }
+//		    }
 		
 		
 	    //    LOGIN
@@ -87,6 +91,21 @@ public class HomeController {
 
 	    	if (user != null) {
 	    		return ResponseEntity.ok(user);
+	    	}
+	    	
+	    	else return null;
+//	        return userService.login(user);
+	    }
+	    
+	    //   ADMIN LOGIN
+	    @PostMapping("/adminlogin")
+	    public @ResponseBody ResponseEntity<Object> adminLogin(@RequestParam(value="username", required=true) String username,
+	    		 @RequestParam(value="password", required=true) String password) 
+	    {
+	    	Admin admin = adminService.authenticate(username, password);
+
+	    	if (admin != null) {
+	    		return ResponseEntity.ok(admin);
 	    	}
 	    	
 	    	else return null;

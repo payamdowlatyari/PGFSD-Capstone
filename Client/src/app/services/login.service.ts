@@ -7,12 +7,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LoginService {
-  registrationUser(value: any) {
-    throw new Error('Method not implemented.');
-  }
-  authenticateUser(loginValue: { username: any; password: any; }) {
-    throw new Error('Method not implemented.');
-  }
+  // registrationUser(value: any) {
+  //   throw new Error('Method not implemented.');
+  // }
+  // authenticateUser(loginValue: { username: any; password: any; }) {
+  //   throw new Error('Method not implemented.');
+  // }
 
 
   private apiServerUrl = environment.apiBaseUrl;
@@ -30,24 +30,22 @@ export class LoginService {
     let headers = new HttpHeaders(
     {
       'Content-Type': 'application/x-www-form-urlencoded'
-      // 'Access-Control-Allow-Credentials' : true
     });
     return this.http.post(url, params, {headers: headers, withCredentials : true});
   }
 
-  getToken(user: any): Observable<any> {
-    return this.httpService.post(
-      `${this.apiServerUrl}/token/generate-token`,
-      user
-    );
+  sendAdminCredential(username: string, password: string) {
+    let url = `${this.apiServerUrl}/api/adminlogin`;
+    let params = 'username='+username+'&password='+password;
+    let headers = new HttpHeaders(
+    {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    return this.http.post(url, params, {headers: headers, withCredentials : true});
   }
 
   authenticate(user:any): Observable<any>{
     return this.httpService.post(`${this.apiServerUrl}/authenticate}`, user);
-  }
-
-  getUser(id: any): Observable<any> {
-    return this.httpService.get(`${this.apiServerUrl}/user/${id}`);
   }
 
   getAllUser(): Observable<any> {
@@ -57,6 +55,10 @@ export class LoginService {
   logout() {
      return this.http.get(`${this.apiServerUrl}/api/logout`, { withCredentials: true });
    }
+
+   adminLogout() {
+    return this.http.get(`${this.apiServerUrl}/api/adminlogout`, { withCredentials: true });
+  }
 
    signup(data: any){
     return this.http.post<string>(`${this.apiServerUrl}/api/signup`,
