@@ -25,6 +25,7 @@ import { TransactionComponent } from './components/transaction/transaction.compo
 import { CheckManagementComponent } from './components/check-management/check-management.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule
   ],
   providers: 
   [

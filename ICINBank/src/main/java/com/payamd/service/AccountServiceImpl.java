@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.payamd.entity.Account;
 import com.payamd.entity.CheckBookRequest;
+import com.payamd.entity.User;
 import com.payamd.repository.AccountRepository;
 import com.payamd.repository.CheckBookRequestRepository;
 import com.payamd.repository.UserRepository;
@@ -28,6 +29,17 @@ public class AccountServiceImpl implements AccountService{
 	 public List<Account> get() {
 			return accountRepository.findAll();
 	 }
+	
+	 @Override
+		public Account getAccount(String accountNumber) {
+		 List <Account> account = accountRepository.findAll();
+
+			for(Account item: account)
+			 if (item.getAccountNumber().equals(accountNumber)) {			 
+		            return item;
+				 }   	
+				return null;
+		}
 //
 	@Override
 	public String createNewAccount(Account account, long id) {

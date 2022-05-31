@@ -1,0 +1,23 @@
+.btn{
+    border: none;
+    border-radius: 4px;
+    padding: 6px;
+    outline: none;
+    min-width: 200px;
+  }
+  .btn:hover {
+    outline: none;
+  }
+
+  .title a{
+    padding-left: 1em;
+    font-size: 2em;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #eee;
+    font-weight: 900;
+}
+
+input {
+    max-width: 350px;
+}

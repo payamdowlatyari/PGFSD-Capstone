@@ -23,9 +23,11 @@ export class AccountComponent implements OnInit {
   // }
 
     public ngOnInit(): void {
-      this.accountService.getAccountById(this.dataService.getUser().id)
+      
+      this.accountService.getAccountByNumber(this.dataService.getUser().id)
       .subscribe(
         account => {
+          console.log(this.accountNumber + ' ' + this.accountType)
           this.accountNumber = account.accountNumber;
           this.accountType = account.accountType;
           this.balance = account.balance;

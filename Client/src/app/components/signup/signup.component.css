@@ -8,3 +8,23 @@
   .btn:hover {
     outline: none;
   }
+
+  .title a{
+    padding-left: 1em;
+    font-size: 2em;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #eee;
+    font-weight: 900;
+}
+
+input {
+    max-width: 350px;
+}
+
+.nav a{
+    text-decoration: none;
+    padding: 1em;
+    color: cadetblue;
+    cursor: pointer;
+}

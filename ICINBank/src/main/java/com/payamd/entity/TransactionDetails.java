@@ -22,25 +22,25 @@ public class TransactionDetails {
 	@Column(name = "acc_no")
 	private String acccountNumber;
 	
-	@Column(name = "form")
-	private String form;
+	@Column(name = "to_acc")
+	private String toAccountNumber;
 	
 	@Column(name = "action")
 	private String action;
 	
-	@Column(name = "to_date")
-	private Date toDate;
+	@Column(name = "date")
+	private Date date;
 	
 	
 	public TransactionDetails() {}
 	
-	public TransactionDetails(long tid, String acccountNumber, String form, String action, Date toDate) {
+	public TransactionDetails(long tid, String acccountNumber, String toAccountNumber, String action, Date date) {
 		
 		this.tid = tid;
 		this.acccountNumber = acccountNumber;
-		this.form = form;
+		this.toAccountNumber = toAccountNumber;
 		this.action = action;
-		this.toDate = toDate;
+		this.date = date;
 	}
 	
 
@@ -52,20 +52,20 @@ public class TransactionDetails {
 		this.tid = tid;
 	}
 
-	public String getAcccountNumber() {
+	public String getAccountNumber() {
 		return acccountNumber;
 	}
 
-	public void setAcccountNumber(String acccountNumber) {
+	public void setAccountNumber(String acccountNumber) {
 		this.acccountNumber = acccountNumber;
 	}
 
-	public String getForm() {
-		return form;
+	public String getToAccountNumber() {
+		return toAccountNumber;
 	}
 
-	public void setForm(String form) {
-		this.form = form;
+	public void setToAccountNumber(String toAccountNumber) {
+		this.toAccountNumber = toAccountNumber;
 	}
 
 	public String getAction() {
@@ -76,11 +76,11 @@ public class TransactionDetails {
 		this.action = action;
 	}
 
-	public Date getToDate() {
-		return toDate;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setToDate(Date toDate) {
-		this.toDate = toDate;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }

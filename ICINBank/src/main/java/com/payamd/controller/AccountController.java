@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 
 import com.payamd.entity.Account;
+import com.payamd.entity.User;
 import com.payamd.service.AccountService;
 
 @RestController
@@ -31,6 +32,11 @@ public class AccountController {
         List<Account> accounts =  accountService.get();
         return new ResponseEntity<>(accounts, HttpStatus.OK);
     }
+	
+	@GetMapping("/accountnumber/{number}")
+	public Account getaccountById(@PathVariable String number) {
+		return this.accountService.getAccount(number);
+	}
 	
 	@PostMapping("/{id}")
     public @ResponseBody String createNewAccount(@RequestBody Account account, @PathVariable long id) {

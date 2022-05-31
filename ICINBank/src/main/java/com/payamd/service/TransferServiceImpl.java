@@ -44,10 +44,10 @@ public class TransferServiceImpl implements TransferService{
         
         TransactionDetails td = new TransactionDetails();
         td.setTid(transfer.getTid());
-        td.setAcccountNumber(transfer.getSenderAccount());
-        td.setForm("debit");
+        td.setAccountNumber(transfer.getSenderAccount());
+        td.setToAccountNumber(transfer.getSenderAccount());
         td.setAction("deposit");
-        td.setToDate(transfer.getDate());
+        td.setDate(transfer.getDate());
         transactionDetailsRepository.save(td);
         
         return "Transaction Completed";

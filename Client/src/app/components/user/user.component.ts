@@ -14,13 +14,13 @@ export class UserComponent implements OnInit {
   users : User[] | undefined;
   public user : User | undefined;
   username: string = '';
-  constructor(private userService: UserService , private dataService: DataService,){}
+  constructor(private userService: UserService , private dataService: DataService){}
 
 ngOnInit(): void {
-  // this.getUser(this.username);
+
   this.user = this.dataService.getUser();
   this.username = this.user.username;
-  this.getUsers();
+
 }
   // getUserById(id: (id: any) => void) {
   //   throw new Error('Method not implemented.');
