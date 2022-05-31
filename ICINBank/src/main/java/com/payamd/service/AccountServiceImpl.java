@@ -84,6 +84,15 @@ public class AccountServiceImpl implements AccountService{
 		return "no request was found!";
 	}
 
+	@Override
+	public String updateBalance(String accountNumber, BigDecimal balance) {
+		
+		Account account = getAccount(accountNumber);
+		account.setBalance(balance);		
+		return updateAccount(account, account.getId());
+
+	}
+
 	 
 
 }

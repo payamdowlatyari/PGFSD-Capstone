@@ -14,9 +14,9 @@ export class TransferComponent implements OnInit {
 
   toAccountNumber: string = '';
   accountNumber: string = '';
-  toAccountType: string = '';
-  accountType: string = '';
-  isChecked: boolean = false;
+  // toAccountType: string = '';
+  // accountType: string = '';
+  // isChecked: boolean = false;
   amount: number = 0;
   message: string = '';
   account: Account | undefined;
@@ -52,9 +52,7 @@ export class TransferComponent implements OnInit {
 
   transferMoney() {
     if (this.toAccountNumber === '' ||
-      this.toAccountType === '' ||
       this.accountNumber === '' ||
-      this.accountType === '' ||
       this.message === '') {
       alert('Please enter all the details!');
       return;
@@ -75,12 +73,12 @@ export class TransferComponent implements OnInit {
       return;
     }
 
-    if (this.isChecked) {
-      if (this.accountType === this.toAccountType) {
-        alert('Illegal transaction!');
-        return;
-      }
-    }
+    // if (this.isChecked) {
+    //   if (this.accountType === this.toAccountType) {
+    //     alert('Illegal transaction!');
+    //     return;
+    //   }
+    // }
 
     if (this.account && this.account?.balance < this.amount) {
       alert(`You only have USD ${this.account.balance} in your account\nYou need USD ${Math.round(this.amount - this.account.balance)} more to transfer`);
@@ -95,11 +93,9 @@ export class TransferComponent implements OnInit {
     let transaction = {
       sender: this.accountNumber,
       receiver: this.toAccountNumber,
-      action: this.accountType,
-      form: this.toAccountType,
+      // action: this.accountType,
       amount: this.amount,
-      message: this.message,
-      status: 0
+      message: this.message
     } as Transaction;
 
     this.transactionService.postTransaction(transaction)
@@ -110,11 +106,11 @@ export class TransferComponent implements OnInit {
       (      error: any) => console.log(error),
       () => {
         this.toAccountNumber = '';
-        this.toAccountType = '';
+        // this.toAccountType = '';
         this.accountNumber = '';
-        this.accountType = '';
+        // this.accountType = '';
         this.amount = 0;
-        this.isChecked = false;
+        // this.isChecked = false;
         this.message = '';
       }
     )

@@ -2,7 +2,7 @@ package com.payamd.service;
 
 import com.payamd.entity.Account;
 import com.payamd.entity.CheckBookRequest;
-
+import java.math.*;
 import java.util.List;
 
 public interface AccountService {
@@ -13,4 +13,5 @@ public interface AccountService {
 	String updateAccount(Account account, long id);
 	String deleteAccount(long id);
 	String getStatus(long id);
+	String updateBalance(String accountNumber, BigDecimal balance);
 }

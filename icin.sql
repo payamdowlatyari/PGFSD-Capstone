@@ -19,7 +19,7 @@ PRIMARY KEY(id)
 
 
 CREATE TABLE account (
-id BIGINT(10) NOT NULL AUTO_INCREMENT,
+id BIGINT(10) NOT NULL,
 acc_no VARCHAR(10),
 acc_type VARCHAR(10),
 balance decimal(19,2) DEFAULT NULL,
@@ -44,7 +44,8 @@ CREATE TABLE transactionDetails (
 tid BIGINT(10) NOT NULL,
 acc_no VARCHAR(10) NOT NULL,
 to_acc VARCHAR(10) NOT NULL,
-action VARCHAR(10),
+message VARCHAR(50),
+amount decimal(19,2) DEFAULT NULL,
 date DATE,
 PRIMARY KEY(tid),
 FOREIGN KEY(tid) REFERENCES transfer(tid)
@@ -52,7 +53,7 @@ FOREIGN KEY(tid) REFERENCES transfer(tid)
 
 
 CREATE TABLE checkBookRequest(
-id BIGINT(10) NOT NULL AUTO_INCREMENT,
+id BIGINT(10) NOT NULL,
 req_status INT(1),
 acc_no VARCHAR(10),
 acc_type VARCHAR(10),
@@ -66,7 +67,7 @@ CREATE TABLE admin(
 id BIGINT (10) NOT NULL AUTO_INCREMENT,
 username VARCHAR(15) NOT NULL,
 password VARCHAR(15) NOT NULL,
-PRIMARY KEY(id
+PRIMARY KEY(id)
 );
 
 

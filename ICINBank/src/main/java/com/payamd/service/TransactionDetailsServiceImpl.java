@@ -1,12 +1,14 @@
 package com.payamd.service;
 
 import java.util.List;
-
+import java.util.Date;
+import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.payamd.entity.Account;
 import com.payamd.entity.TransactionDetails;
+import com.payamd.entity.Transfer;
 import com.payamd.repository.AccountRepository;
 import com.payamd.repository.TransactionDetailsRepository;
 
@@ -27,50 +29,58 @@ public class TransactionDetailsServiceImpl implements TransactionDetailsService{
 
 	@Override
 	public String addTransaction(TransactionDetails transaction) {
-		List<TransactionDetails> list = this.transactionDetailsRepository
-				.getTransactionsByAccountNumber(transaction.getAccountNumber());
-		double amount = 0;
+//		List<TransactionDetails> list = this.transactionDetailsRepository
+//				.getTransactionsByAccountNumber(transaction.getAccountNumber());
+		
+//		String accountNumber = transaction.getAccountNumber();
+		AccountService accountService = null;
+		
+		String message = "";
 
-//		for (Transfer temp : list) {
-//			if (temp.getTransferStatus() == 0) {
-//				if (temp.getFromAccountType().equals("Primary")) {
-//					amount += temp.getTransferAmount();
-//				}
-//			}
-//		}
+		 List <Account> accounts = accountRepository.findAll();
+		 Account accountSender = new Account();
+		 Account accountReceiver = new Account();
+		 BigDecimal balance, newBalance;
+		 BigDecimal receiverBalance, newReceiverBalance;
+		 BigDecimal amount = transaction.getAmount();
 
-//		Account accountSender = this.accountRepository.getOne(transaction.getAccountNumber());
-//		Account accountReceiver = this.accountRepository.getOne(transaction.getToAccountNumber());
-//
-//		boolean check = false;
-//		List<Account> accountsList = this.accountRepository.findAll();
-//		for (Account temp : accountsList) {
-//			if (temp.getAccountNumber().equals(transaction.getToAccountNumber())) {
-//				check = true;
-//			}
-//		}
-//		if (!check) {
-//			return "Transfer bank account does not exists!";
-//		}
-//
-//		Accounts myAccount = this.accountsRepository.getOne(transactions.getFromAccountNumber());
-//		if (transactions.getFromAccountType().equals("Primary")) {
-//			if (myAccount.getAccountBalancePrimary() - amountPrimary < transactions.getTransferAmount()) {
-//				return "You already have some pending transactions!\nYour primary account would not have that much balance if these transactions are permitted!";
-//			}
-//		} else {
-//			if (myAccount.getAccountBalanceSavings() - amountSavings < transactions.getTransferAmount()) {
-//				return "You already have some pending transactions!\nYour savings account would not have that much balance if these transactions are permitted!";
-//			}
-//		}
-//
-//		Transactions finalTransaction = new Transactions(transactions.getFromAccountNumber(),
-//				transactions.getToAccountNumber(), accountSender.getAccountHolderName(),
-//				accountReceiver.getAccountHolderName(), transactions.getFromAccountType(),
-//				transactions.getToAccountType(), transactions.getTransferAmount(), transactions.getTransferMessage(),
-//				new Date(), transactions.getTransferStatus());
-//
-//		this.transactionsRepository.save(finalTransaction);
-		return "Transfer initiated.\nCheck the status in the transactions tab!";
+			for(Account item: accounts) {
+				if (item.getAccountNumber().equals(transaction.getAccountNumber())) {			 
+					accountSender = item;
+					balance = item.getBalance();
+					int res = amount.compareTo(balance);
+					
+					if (res == 1) {
+						return  "Account does not have sufficient funds!";
+					} else {
+						newBalance = balance.subtract(amount);
+						message = accountService.updateBalance(accountSender.getAccountNumber(), newBalance);
+					}
+					
+				} 
+				if (item.getAccountNumber().equals(transaction.getToAccountNumber())) {
+					accountReceiver = item;
+					receiverBalance = item.getBalance();
+					newReceiverBalance = receiverBalance.add(amount);
+					message = accountService.updateBalance(accountReceiver.getAccountNumber(), newReceiverBalance);
+				} else {
+					return "Transfer bank account does not exists!";
+
+				}
+			}
+			
+			Date newDate = new Date();
+
+//		TransactionDetails finalTransaction = 
+//				new TransactionDetails(
+//				transaction.getTid(), 
+//				accountSender.getAccountNumber(), 
+//				accountReceiver.getAccountNumber(), 
+//				transaction.getMessage(),
+//				newDate,  
+//				transaction.getAmount());
+
+		this.transactionDetailsRepository.save(transaction);
+		return "Transfer details: " + message;
 	}
 }
