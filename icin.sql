@@ -83,3 +83,5 @@ INSERT INTO transfer VALUES('1101','101','1001','1002','100','2022-05-05');
 INSERT INTO transfer VALUES('1102','102','1002','1001','200','2022-06-05');
 
 INSERT INTO admin VALUES('admin','admin');
+
+INSERT INTO checkBookRequest VALUES('101','0','101','Checking','50','2022-05-05');

@@ -1,8 +1,8 @@
 export interface Check {
-    id: number,
+    id: string,
     accountNumber: string,
     accountType: string,
     date: Date,
     pages: number,
-    status: string
+    status: number
 }

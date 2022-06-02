@@ -5,5 +5,5 @@ import com.payamd.entity.TransactionDetails;
 
 public interface TransactionDetailsService {
 	List<TransactionDetails>get(); 
-	public String addTransaction(TransactionDetails transactions);
+	String addTransaction(TransactionDetails transaction);
 }

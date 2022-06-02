@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.payamd.entity.Account;
 import com.payamd.entity.CheckBookRequest;
-import com.payamd.entity.User;
 import com.payamd.repository.AccountRepository;
 import com.payamd.repository.CheckBookRequestRepository;
 import com.payamd.repository.UserRepository;

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './components/account/account.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { CheckManagementComponent } from './components/check-management/check-management.component';
@@ -33,12 +34,11 @@ const routes: Routes = [
     {path: 'check', component: CheckComponent},
     {path: '**', component: LoginComponent}
   ]},
-  {path: 'admin', component: AdminComponent, canActivateChild: [AdminRoutingService],
-    children: [
-    {path: 'login', component: AdminLoginComponent},
+  {path: 'admin/login', component: AdminLoginComponent},
+  {path: 'admin/home', component: AdminHomeComponent, canActivateChild: [AdminRoutingService],
+    children: [    
     {path: 'admindashboard', component: AdminDashboardComponent},
-    {path: 'check-management', component: CheckManagementComponent},
-    {path: 'check', component: CheckComponent},
+    {path: 'checkmanagement', component: CheckManagementComponent},
     {path: '**', component: AdminLoginComponent}
   ]},
   {path: '**', redirectTo: '/login'}

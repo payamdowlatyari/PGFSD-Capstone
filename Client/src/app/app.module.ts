@@ -26,6 +26,8 @@ import { CheckManagementComponent } from './components/check-management/check-ma
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TransactionComponent,
     CheckManagementComponent,
     AdminLoginComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    AdminNavComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,

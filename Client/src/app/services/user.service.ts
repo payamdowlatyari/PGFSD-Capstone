@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
 import { Message } from '../models/message';
+import { Check } from '../models/check';
 
 
 @Injectable({
@@ -35,8 +36,12 @@ export class UserService {
     return this.http.get<Message>(`${this.apiServerUrl}/user/update/password/${newPassword}/${id}`)
   }
 
-  requestCheckBook(id: string) {
-    return this.http.get<Message>(`${this.apiServerUrl}/user/reqcheck/${id}`)
+  requestCheckBook(id: string, pages: string) {
+    return this.http.post<Message>(`${this.apiServerUrl}/user/checkrequest/${id}`,pages)
+  }
+
+  requestCheckBooks(id: string) : Observable<Array<Check>> {
+    return this.http.get<Array<Check>>(`${this.apiServerUrl}/user/checkrequests/${id}`)
   }
 
   getCheckBookRequests() : Observable<Array<any>> {

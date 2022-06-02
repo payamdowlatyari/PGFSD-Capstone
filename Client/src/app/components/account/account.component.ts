@@ -11,19 +11,15 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class AccountComponent implements OnInit {
 
-  id : string = '';
-  accountNumber: string = '';
+    id : string = '';
+    accountNumber: string = '';
     accountType: string = '';
     balance: number = 0;
   
     constructor(private dataService: DataService, private accountService: AccountService) { }
 
-  // ngOnInit() : void{
-  //   this.getAccounts();
-  // }
-
     public ngOnInit(): void {
-      
+
       this.accountService.getAccountByNumber(this.dataService.getUser().id)
       .subscribe(
         account => {
@@ -35,22 +31,4 @@ export class AccountComponent implements OnInit {
         error => console.log(error)
       ); 
     }
-
-   
-  
-    // ngOnInit(): void {
-    //   this.accountService.getAccountByNumber(this.dataService.getUser().accountNumber)
-    //   .subscribe(
-    //     account => {
-    //       this.accountNumber = account.accountNumber;
-    //       this.accountHolderName = account.accountHolderName;
-    //       this.accountCIFNumber = account.accountCIFNumber;
-    //       this.accountBranch = account.accountBranch;
-    //       this.accountBalancePrimary = account.accountBalancePrimary;
-    //       this.accountBalanceSavings = account.accountBalanceSavings;
-    //     },
-    //     error => console.log(error)
-    //   )
-    // }
-
 }

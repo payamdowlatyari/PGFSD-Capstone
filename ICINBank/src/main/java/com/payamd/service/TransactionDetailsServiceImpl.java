@@ -8,11 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.payamd.entity.Account;
 import com.payamd.entity.TransactionDetails;
-import com.payamd.entity.Transfer;
 import com.payamd.repository.AccountRepository;
 import com.payamd.repository.TransactionDetailsRepository;
 
-@Service(value="transactionDetails")
+@Service
 public class TransactionDetailsServiceImpl implements TransactionDetailsService{
 	
 	@Autowired
@@ -29,10 +28,7 @@ public class TransactionDetailsServiceImpl implements TransactionDetailsService{
 
 	@Override
 	public String addTransaction(TransactionDetails transaction) {
-//		List<TransactionDetails> list = this.transactionDetailsRepository
-//				.getTransactionsByAccountNumber(transaction.getAccountNumber());
-		
-//		String accountNumber = transaction.getAccountNumber();
+
 		AccountService accountService = null;
 		
 		String message = "";
@@ -69,18 +65,19 @@ public class TransactionDetailsServiceImpl implements TransactionDetailsService{
 				}
 			}
 			
+			TransactionDetails finalTransaction = new TransactionDetails();
+			
 			Date newDate = new Date();
 
-//		TransactionDetails finalTransaction = 
-//				new TransactionDetails(
-//				transaction.getTid(), 
-//				accountSender.getAccountNumber(), 
-//				accountReceiver.getAccountNumber(), 
-//				transaction.getMessage(),
-//				newDate,  
-//				transaction.getAmount());
+		 finalTransaction.setAccountNumber(accountSender.getAccountNumber()); 
+		 finalTransaction.setToAccountNumber(accountReceiver.getAccountNumber());
+		 finalTransaction.setAmount(amount);
+		 finalTransaction.setMessage(transaction.getMessage());
+		 finalTransaction.setTid(0);
+		 finalTransaction.setDate((java.sql.Date) newDate);
+				
 
-		this.transactionDetailsRepository.save(transaction);
+		this.transactionDetailsRepository.save(finalTransaction);
 		return "Transfer details: " + message;
 	}
 }

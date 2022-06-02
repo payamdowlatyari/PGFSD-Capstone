@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.payamd.entity.CheckBookRequest;
 import com.payamd.entity.Message;
 import com.payamd.entity.User;
+import com.payamd.service.CheckService;
 import com.payamd.service.UserService;
 
 
@@ -27,6 +29,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService; 
+	
+	@Autowired
+	private CheckService checkService;
 	
 	   @GetMapping("/list")
 	    public ResponseEntity<List<User>> getUserList() {
@@ -63,6 +68,12 @@ public class UserController {
 	   @PostMapping("/create")
 		public Message createUser(@RequestBody User user) {
 			return new Message(this.userService.create(user));
+			
+		}
+	   
+	   @PostMapping("/checkrequest")
+		public Message requestCheckBook(@RequestBody String accountNumber) {
+			return new Message(this.checkService.checkBookRequest(accountNumber));
 			
 		}
 	   

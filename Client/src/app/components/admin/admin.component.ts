@@ -47,17 +47,17 @@ export class AdminComponent implements OnInit {
   }
 
 
-  logout(){
-    this.loginService.logout().subscribe(
-      res => {
-               this.router.navigate(['/']);     
-      },
-      err => console.log(err)
-      );
-      location.reload();
-     localStorage.setItem('PortalAdminHasLoggedIn', '');
-    this.dashboard=false;
-  }
+  // logout(){
+  //   this.loginService.logout().subscribe(
+  //     res => {
+  //              this.router.navigate(['/']);     
+  //     },
+  //     err => console.log(err)
+  //     );
+  //     location.reload();
+  //    localStorage.setItem('PortalAdminHasLoggedIn', '');
+  //   this.dashboard=false;
+  // }
 
   ngOnInit() {}
 

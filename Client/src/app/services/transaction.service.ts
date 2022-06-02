@@ -9,6 +9,9 @@ import { Transaction } from '../models/transaction';
   providedIn: 'root'
 })
 export class TransactionService {
+  // getFilteredTransactions(accountNumber: any, startDate: Date, endDate: Date) {
+  //   throw new Error('Method not implemented.');
+  // }
 
   private apiServerUrl = environment.apiBaseUrl;
   
@@ -22,9 +25,9 @@ export class TransactionService {
     return this.http.get<Array<Transaction>>(`${this.apiServerUrl}/transaction/${accountNumber}`);
   }
 
-  // getFilteredTransactions(accountNumber: string, startDate: Date, endDate: Date) : Observable<Array<Transaction>> {
-  //   return this.http.get<Array<Transaction>>(`${this.apiServerUrl}/transactions/${accountNumber}/${startDate}/${endDate}`);
-  // }
+  getFilteredTransactions(accountNumber: string, startDate: Date, endDate: Date) : Observable<Array<Transaction>> {
+    return this.http.get<Array<Transaction>>(`${this.apiServerUrl}/transactions/${accountNumber}/${startDate}/${endDate}`);
+  }
 
   // getAllPendingTransaction() : Observable<Array<Transaction>> {
   //   return this.http.get<Array<Transaction>>(`${this.apiServerUrl}/admin/get-all-pending-transactions`)

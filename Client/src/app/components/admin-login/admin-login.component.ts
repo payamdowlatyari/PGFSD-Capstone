@@ -30,7 +30,7 @@ export class AdminLoginComponent implements OnInit {
   loginAdmin() {
     if(this.username === 'admin' && this.password === 'admin') {
       this.adminDataService.setIsSafe(true);
-      this.router.navigate(['admin/admindashboard']);
+      this.router.navigate(['admin/home/admindashboard']);
       return;
     }
     alert('Login failed!');

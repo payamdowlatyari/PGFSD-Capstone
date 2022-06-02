@@ -7,13 +7,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LoginService {
-  // registrationUser(value: any) {
-  //   throw new Error('Method not implemented.');
-  // }
-  // authenticateUser(loginValue: { username: any; password: any; }) {
-  //   throw new Error('Method not implemented.');
-  // }
-
 
   private apiServerUrl = environment.apiBaseUrl;
   isAuthenticated: boolean = false;

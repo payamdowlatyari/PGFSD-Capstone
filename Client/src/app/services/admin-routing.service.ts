@@ -16,11 +16,11 @@ export class AdminRoutingService implements CanActivateChild {
     }
 
     let url = childRoute.url.toString();
-    if(url === 'login') {
+    console.log(url)
+    if(url === 'admin/home') {
       return true;
-    }
-
-    this.router.navigate(['admin/login']);
+    } 
+    this.router.navigate(['login']);
     return false;
   }
 }

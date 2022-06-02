@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user';
 import { DataService } from 'src/app/services/data.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -19,8 +18,6 @@ export class ProfileComponent implements OnInit {
   username: string = '';
   password: string = '';
   passwordType: string = 'password';
-  passwordIcon: string = 'fas fa-eye-slash';
-  lockIcon: string =  'fas fa-lock';
 
  constructor (private userService: UserService , private dataService: DataService){}
 
@@ -38,16 +35,13 @@ export class ProfileComponent implements OnInit {
     this.address = user.address;
   }
 
-  onPasswordToggle() {
-    if (this.passwordIcon === 'fas fa-eye-slash') {
-      this.passwordType = 'text';
-      this.lockIcon = 'fas fa-unlock';
-    } else {
-      this.passwordIcon = 'fas fa-eye-slash';
-      this.passwordType = 'password';
-      this.lockIcon = 'fas fa-lock';
+  changePasswordType(){
+      if(this.passwordType == 'password'){
+        this.passwordType = 'text'
+      }else{
+        this.passwordType = 'password'
+      }
     }
-  }
 
   updatePassword() {
     if (this.password == '') {

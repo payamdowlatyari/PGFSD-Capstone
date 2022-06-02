@@ -28,7 +28,7 @@ public class TransactionDetails {
 	@Column(name = "message")
 	private String message;
 	
-	@Column(name = "message")
+	@Column(name = "amount")
 	private BigDecimal amount;
 	
 	@Column(name = "date")

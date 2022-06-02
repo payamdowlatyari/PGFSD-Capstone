@@ -46,7 +46,7 @@ public class TransferServiceImpl implements TransferService{
         td.setTid(transfer.getTid());
         td.setAccountNumber(transfer.getSenderAccount());
         td.setToAccountNumber(transfer.getSenderAccount());
-        td.setAction("deposit");
+        td.setAmount(transfer.getAmount());
         td.setDate(transfer.getDate());
         transactionDetailsRepository.save(td);
         

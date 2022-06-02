@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.payamd.entity.CheckBookRequest;
 import com.payamd.repository.CheckBookRequestRepository;
 
-@Service(value="checkBookRequest")
+@Service
 public class CheckServiceImpl implements CheckService{
 	
 	@Autowired
@@ -34,10 +34,10 @@ public class CheckServiceImpl implements CheckService{
 	}
 	
 	@Override
-	public String isCheckBookRequested(String accountNumber, String accountType) {
+	public String isCheckBookRequested(String accountNumber) {
 		List<CheckBookRequest> list = this.checkBookRequestRepository.findAll();
 		for(CheckBookRequest temp : list) {
-			if(temp.getAccountNumber().equals(accountNumber) && temp.getAccountType().equals(accountType)) {
+			if(temp.getAccountNumber().equals(accountNumber)) {
 				if(temp.getStatus() == 0) {
 					return "Already Requested!";
 				}
@@ -47,11 +47,11 @@ public class CheckServiceImpl implements CheckService{
 	}
 	
 	@Override
-	public String checkBookRequest(String accountNumber, String accountType) {
-		if(isCheckBookRequested(accountNumber, accountType).equals("No pending requests")) {
+	public String checkBookRequest(String accountNumber) {
+		if(isCheckBookRequested(accountNumber).equals("No pending requests")) {
 			CheckBookRequest check = new CheckBookRequest();
 			check.setAccountNumber(accountNumber);
-			check.setAccountType(accountType);
+			check.setAccountType("Checking");
 			check.setDate(new Date());
 			check.setStatus(0);
 			this.checkBookRequestRepository.save(check);
@@ -59,6 +59,12 @@ public class CheckServiceImpl implements CheckService{
 		} 
 		return "There is already a pending request for - "+accountNumber;
 	}
+
+//	@Override
+//	public String requestCheckBook(String accountNumber) {
+//		
+//		
+//	}
 	
 	
 

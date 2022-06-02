@@ -21,6 +21,8 @@ public interface CheckBookRequestRepository extends JpaRepository <CheckBookRequ
 	@Modifying
 	@Query(value = "UPDATE checkBookRequest set req_status=?1 where acc_no like ?2", nativeQuery = true)
 	void updateCheckBookStatus(int status, String accountNumber);
+	
+	
 
 //	CheckBookRequest getOne(String accountNumber);
 }

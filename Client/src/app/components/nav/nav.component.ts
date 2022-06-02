@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
-// import { AuthService } from 'src/app/services/auth.service';
-// import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-nav',
@@ -12,15 +9,9 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class NavComponent implements OnInit {
 
-dashboard: boolean;
 loggedIn: boolean;
 
 constructor(private dataService: DataService, private router : Router) {
-	if(localStorage.getItem('PortalAdminHasLoggedIn') == '' || localStorage.getItem('PortalAdminHasLoggedIn') == null) {
-		this.dashboard = false;
-	} else {
-			this.dashboard = true;
-		}  
 
 	if(localStorage.getItem('PortalUserHasLoggedIn') == '' || localStorage.getItem('PortalUserHasLoggedIn') == null ) {
 			this.loggedIn = false;
@@ -29,38 +20,6 @@ constructor(private dataService: DataService, private router : Router) {
 			this.loggedIn = true;
 	} 
 }
-
-// logout(){
-
-// 		this.router.navigate(['/login']);   
-//     	localStorage.setItem('PortalUserHasLoggedIn', '');
-//    		this.loggedIn=false;
-   
-// }
-
-// adminLogout(){
-
-// 	  	this.router.navigate(['/login']);   
-// 	 	localStorage.setItem('PortalAdminHasLoggedIn', '');
-// 		this.dashboard=false;
-// }
-
-// getDisplay() {
-// if(!this.loggedIn){
-//   return "none";
-// } else {
-//   return "";
-// }
-// }
-
-//  dashboardDisplay() {
-//     if(!this.dashboard){
-//       return "none";
-//     } else {
-//       return "";
-//     }
-//   }
-
   onDashboard() {
     this.router.navigate(['home/dashboard']);
   }
@@ -90,9 +49,8 @@ constructor(private dataService: DataService, private router : Router) {
     this.dataService.resetUser();
     this.router.navigate(['login']);
 	localStorage.setItem('PortalUserHasLoggedIn', '');
-	localStorage.setItem('PortalAdminHasLoggedIn', '');
 	this.loggedIn=false;
-	this.dashboard=false;
+	
   }
 
 ngOnInit(): void {
