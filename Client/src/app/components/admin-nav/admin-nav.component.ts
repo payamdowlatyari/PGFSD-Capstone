@@ -18,19 +18,22 @@ export class AdminNavComponent implements OnInit {
         this.dashboard = true;
       }  
   }
-  
     onDashboard() {
       this.router.navigate(['admin/home/admindashboard']);
     }
   
-    onChequeBooks() {
+    onCheckBooks() {
       this.router.navigate(['admin/home/checkmanagement']);
+    }
+
+    onTransaction(){
+      this.router.navigate(['admin/home/transactionmanagement']);
     }
   
     onLogout() {
       this.dataService.setIsSafe(false);
       this.dataService.resetAdmin();
-      this.router.navigate(['login']);
+      this.router.navigate(['admin/login']);
       localStorage.setItem('PortalAdminHasLoggedIn', '');
       this.dashboard=false;
     }

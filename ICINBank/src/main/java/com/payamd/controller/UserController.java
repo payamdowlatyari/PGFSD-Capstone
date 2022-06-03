@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.payamd.entity.CheckBookRequest;
 import com.payamd.entity.Message;
 import com.payamd.entity.User;
 import com.payamd.service.CheckService;
@@ -48,16 +46,7 @@ public class UserController {
 	   @GetMapping("/username/{username}")
 		public User getUserByUsername(@PathVariable String username) {
 			return this.userService.getUser(username);
-		}
-	   
-//	   @PostMapping("/{username}")
-//		public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
-//		   User user = this.userService.getUser(username);
-////			return this.usersService.getUserViaUserId(loginUserId);
-//		   return new ResponseEntity<User>(user, HttpStatus.OK);
-//
-//		}
-			
+		}	
 	  
 	   @GetMapping("/update/password/{newPassword}/{accountNumber}")
 		public Message updateLoginPassword(@PathVariable String newPassword, @PathVariable String accountNumber) {

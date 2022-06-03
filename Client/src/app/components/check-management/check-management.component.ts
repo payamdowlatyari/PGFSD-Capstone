@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Check } from 'src/app/models/check';
+import { AdminService } from 'src/app/services/admin.service';
 import { DataService } from 'src/app/services/data.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -15,11 +16,11 @@ export class CheckManagementComponent implements OnInit {
   id: string = '';
 
   constructor(
-    private userService: UserService
+    private adminService: AdminService
   ) { }
 
   ngOnInit(): void {
-    this.userService.getCheckBookRequests()
+    this.adminService.getCheckBookRequests()
       .subscribe(
         checkBooks => {
           this.checkBooks = checkBooks;
@@ -33,10 +34,10 @@ export class CheckManagementComponent implements OnInit {
   }
 
   accept(checkBookNumber: string) {
-    this.userService.acceptCheckBookRequest(checkBookNumber)
+    this.adminService.acceptCheckBookRequest(checkBookNumber)
       .subscribe(
         message => {
-          this.userService.getCheckBookRequests()
+          this.adminService.getCheckBookRequests()
             .subscribe(
               checkBooks => {
                 alert(message.message);

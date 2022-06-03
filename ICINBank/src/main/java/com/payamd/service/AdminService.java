@@ -9,8 +9,8 @@ public interface AdminService {
 	List<Admin> get();
 	
 	Admin get(Long id);
-	
-	Admin getByUsername(String username);
+	String exists(String username, String password);
+	Admin getAdmin(String username);
 
 	Admin authenticate(String username, String password);
 

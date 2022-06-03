@@ -53,10 +53,7 @@ public class UserServiceImpl implements UserService{
 		 if (item.getUsername().equals(username) && item.getPassword().equals(password)) {
 			 
 	            return "success";
-			 } 
-//		 	else {
-//					return "Password entered is wrong!";
-//				} 	
+			 } 	
 			return "no-user";
 		}
 		

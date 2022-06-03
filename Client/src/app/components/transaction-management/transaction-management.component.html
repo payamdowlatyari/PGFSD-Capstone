@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row mb-4">
+        <h2>Transactions</h2>
+    </div>
+    <div class="col-md-12 col-lg-12 ml-auto">
+        <table class="table">
+            <tr class="table-active">
+                <!-- <th scope="col" class="border-right">#</th> -->
+                <th scope="col">Transfer To Account Number</th>
+                <th scope="col">Transfer From Account Number</th>
+                <th scope="col">Transfer Amount</th>
+                <!-- <th scope="col">Transfer Date</th> -->
+                <!-- <th scope="col">Operation</th> -->
+            </tr>
+            <tr *ngFor="let transaction of toShowTransaction">
+                <!-- <td scope="row" class="border-right">{{transaction['id']}}</td> -->
+                <td>{{transaction['receiver']}}</td>
+                <td>{{transaction['sender']}}</td>
+                <td>{{transaction['amount']}}</td>
+                <!-- <td>{{generateDate(transaction['date'])}}</td> -->
+                <!-- <td>
+                    <button (click)="allow(transaction['id'])" class="bg-danger btn btn-danger">ALLOW</button>
+                </td> -->
+            </tr>
+        </table>
+    </div>
+</div>

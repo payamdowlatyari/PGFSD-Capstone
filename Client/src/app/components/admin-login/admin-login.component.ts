@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminDataService } from 'src/app/services/admin-data.service';
+import { AdminService } from 'src/app/services/admin.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -13,12 +14,10 @@ export class AdminLoginComponent implements OnInit {
   dashboard: boolean;
   username: string = '';
   password: string = '';
-  // form: FormGroup | undefined;
-  // authStatusSub: Subscription | undefined;
   isLoading: boolean | undefined;
-  userId: number | undefined;
+  id: number | undefined;
 
-  constructor (private adminDataService: AdminDataService , private router: Router) {
+  constructor (private adminDataService: AdminDataService , private adminService: AdminService, private router: Router) {
     if(localStorage.getItem('PortalAdminHasLoggedIn') == '' || localStorage.getItem('PortalAdminHasLoggedIn') == null) {
       this.dashboard = false;
     } else {
@@ -28,45 +27,35 @@ export class AdminLoginComponent implements OnInit {
   
 
   loginAdmin() {
-    if(this.username === 'admin' && this.password === 'admin') {
-      this.adminDataService.setIsSafe(true);
-      this.router.navigate(['admin/home/admindashboard']);
+    if(this.username =='' || this.password == '') {
+      alert('Please enter login credentials!');
       return;
     }
-    alert('Login failed!');
+    console.log(this.username + ' ' + this.password)
+    this.adminService.checkAdminByCredentials(this.username, this.password)
+    .subscribe(
+      message => {
+        if(message.message == 'success') {
+          console.log(message.message)
+          this.adminService.getAdmin(this.username).subscribe(
+            admin => {
+              this.adminDataService.setAdmin(admin);
+              this.adminDataService.setIsSafe(true);
+              this.router.navigate(['admin/home/admindashboard']);
+            }
+          )
+        } else if (message.message === 'no-admin') {
+          alert('Athentication faild!');
+          return;
+        } 
+      },
+      error => console.log(error),
+      () => {
+        this.username = '';
+        this.password = '';
+      }
+    )
   }
-
-  // onSubmit() {
-  // 	this.loginService.sendAdminCredential(this.username, this.password).subscribe(
-  //     res => {
-  //       this.dashboard=true;
-  //       localStorage.setItem('PortalAdminHasLoggedIn', 'true');
-  //       location.reload();
-  //     },
-  //     err => console.log(err)
-  //   );
-  // }
-
-  // getDashboard() {
-  //   if(!this.dashboard){
-  //     return "none";
-  //   } else {
-  //     return "";
-  //   }
-  // }
-
-
-  // logout(){
-  //   this.loginService.logout().subscribe(
-  //     res => {
-  //              this.router.navigate(['/']);     
-  //     },
-  //     err => console.log(err)
-  //     );
-  //     location.reload();
-  //    localStorage.setItem('PortalAdminHasLoggedIn', '');
-  //   this.dashboard=false;
-  // }
 
   ngOnInit(): void {
   }

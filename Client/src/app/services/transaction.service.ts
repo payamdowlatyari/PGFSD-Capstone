@@ -29,11 +29,11 @@ export class TransactionService {
     return this.http.get<Array<Transaction>>(`${this.apiServerUrl}/transactions/${accountNumber}/${startDate}/${endDate}`);
   }
 
-  // getAllPendingTransaction() : Observable<Array<Transaction>> {
-  //   return this.http.get<Array<Transaction>>(`${this.apiServerUrl}/admin/get-all-pending-transactions`)
-  // }
+  getAllTransactions() : Observable<Array<Transaction>> {
+    return this.http.get<Array<Transaction>>(`${this.apiServerUrl}/admin/admin/transactions`)
+  }
 
-  // permitTransaction(id: number) : Observable<Message> {
-  //   return this.http.get<Message>(`${this.apiServerUrl}/admin/allow/transaction/${id}`)
-  // }
+  permitTransaction(id: string) : Observable<Message> {
+    return this.http.get<Message>(`${this.apiServerUrl}/admin/allow/transaction/${id}`)
+  }
 }

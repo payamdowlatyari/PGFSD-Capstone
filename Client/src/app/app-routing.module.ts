@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { TransactionManagementComponent } from './components/transaction-management/transaction-management.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { TransferComponent } from './components/transfer/transfer.component';
 import { UserComponent } from './components/user/user.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
     children: [    
     {path: 'admindashboard', component: AdminDashboardComponent},
     {path: 'checkmanagement', component: CheckManagementComponent},
+    {path: 'transactionmanagement', component: TransactionManagementComponent},
     {path: '**', component: AdminLoginComponent}
   ]},
   {path: '**', redirectTo: '/login'}
