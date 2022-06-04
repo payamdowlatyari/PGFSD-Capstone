@@ -20,7 +20,7 @@ public class TransactionDetails {
     private long tid;
 	
 	@Column(name = "acc_no")
-	private String acccountNumber;
+	private String accountNumber;
 	
 	@Column(name = "to_acc")
 	private String toAccountNumber;
@@ -37,10 +37,10 @@ public class TransactionDetails {
 	
 	public TransactionDetails() {}
 	
-	public TransactionDetails(long tid, String acccountNumber, String toAccountNumber, String message, BigDecimal amount, Date date) {
+	public TransactionDetails(long tid, String accountNumber, String toAccountNumber, String message, BigDecimal amount, Date date) {
 		
 		this.tid = tid;
-		this.acccountNumber = acccountNumber;
+		this.accountNumber = accountNumber;
 		this.toAccountNumber = toAccountNumber;
 		this.message = message;
 		this.date = date;
@@ -58,11 +58,11 @@ public class TransactionDetails {
 	}
 
 	public String getAccountNumber() {
-		return acccountNumber;
+		return accountNumber;
 	}
 
-	public void setAccountNumber(String acccountNumber) {
-		this.acccountNumber = acccountNumber;
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
 	public String getToAccountNumber() {
@@ -95,5 +95,12 @@ public class TransactionDetails {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	@Override
+	public String toString() {
+		return "transactionDetails [id="+ tid +", sender=" + accountNumber + ", receiver=" + 
+				toAccountNumber + ", message=" + message + ", date=" + 
+				date + ", amount=" + amount + "]";
 	}
 }

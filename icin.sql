@@ -84,6 +84,10 @@ INSERT INTO transfer VALUES('1102','102','1002','1001','200','2022-06-05');
 
 INSERT INTO admin VALUES('admin','admin');
 
-INSERT INTO checkBookRequest VALUES('101','0','101','Checking','50','2022-05-05');
+INSERT INTO check_book_request VALUES('101','101','Checking','2022-05-05', '50', '0');
 
 INSERT INTO transactionDetails VALUES('1101','101','102','grocery','50','2022-05-05');
+INSERT INTO transaction_details VALUES('1101','101','100','2022-05-05','grocery','50');
+INSERT INTO transaction_details VALUES('1102','102','200','2022-05-25','grocery','101');
+INSERT INTO transaction_details VALUES('1103','101','102','2022-05-15','tools','100');
+

@@ -21,16 +21,16 @@ export class TransactionService {
     return this.http.post<Message>(`${this.apiServerUrl}/transaction/post`, transaction);
   }
 
-  getTransactions(accountNumber: string) : Observable<Array<Transaction>> {
-    return this.http.get<Array<Transaction>>(`${this.apiServerUrl}/transaction/${accountNumber}`);
+  getTransactions(id: string) : Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${this.apiServerUrl}/account/transactions/${id}`);
   }
 
-  getFilteredTransactions(accountNumber: string, startDate: Date, endDate: Date) : Observable<Array<Transaction>> {
-    return this.http.get<Array<Transaction>>(`${this.apiServerUrl}/transactions/${accountNumber}/${startDate}/${endDate}`);
+  getFilteredTransactions(accountNumber: string, startDate: Date, endDate: Date) : Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${this.apiServerUrl}/transactions/${accountNumber}/${startDate}/${endDate}`);
   }
 
-  getAllTransactions() : Observable<Array<Transaction>> {
-    return this.http.get<Array<Transaction>>(`${this.apiServerUrl}/admin/admin/transactions`)
+  getAllTransactions() : Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${this.apiServerUrl}/admin/transactions`)
   }
 
   permitTransaction(id: string) : Observable<Message> {

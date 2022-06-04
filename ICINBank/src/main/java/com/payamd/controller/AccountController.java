@@ -16,8 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 
 import com.payamd.entity.Account;
+import com.payamd.entity.CheckBookRequest;
+import com.payamd.entity.TransactionDetails;
 import com.payamd.entity.User;
 import com.payamd.service.AccountService;
+import com.payamd.service.CheckService;
+import com.payamd.service.TransactionDetailsService;
 
 @RestController
 @RequestMapping("/account")
@@ -26,6 +30,12 @@ public class AccountController {
 
 	@Autowired
 	private AccountService accountService;
+	
+	@Autowired
+	private TransactionDetailsService transactionDetailsService;
+	
+	@Autowired
+	private CheckService checkService;
 	
 	@GetMapping("/list")
     public ResponseEntity <List<Account>> getAccountsList() {       
@@ -52,4 +62,16 @@ public class AccountController {
     public @ResponseBody String deleteAccount(@PathVariable long id) {
         return accountService.deleteAccount(id);
     }
+    
+    @GetMapping("/transactions/{id}")
+	public List<TransactionDetails> getTransactionsById(@PathVariable String id) {
+		return this.transactionDetailsService.getById(id);
+	}
+    
+    @GetMapping("/checkbook/{accountNumber}")
+   	public ResponseEntity <CheckBookRequest> getCheckBookRequests(@PathVariable String accountNumber)
+    {
+    	CheckBookRequest checkbook = checkService.getCheckBookRequests(accountNumber);
+   		return new ResponseEntity<CheckBookRequest>(checkbook, HttpStatus.OK);
+   	}
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.payamd.entity.CheckBookRequest;
 import com.payamd.entity.Message;
 import com.payamd.entity.User;
 import com.payamd.service.CheckService;
@@ -61,10 +62,11 @@ public class UserController {
 		}
 	   
 	   @PostMapping("/checkrequest")
-		public Message requestCheckBook(@RequestBody String accountNumber) {
+		public Message requestCheckBook(@PathVariable String accountNumber) {
 			return new Message(this.checkService.checkBookRequest(accountNumber));
 			
 		}
+	   
 	   
 	   @PostMapping("/signup")
 		public ResponseEntity<?> signupUser(@RequestBody String firstname, String lastname, String username, String password) {

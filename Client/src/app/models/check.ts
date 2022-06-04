@@ -3,6 +3,6 @@ export interface Check {
     accountNumber: string,
     accountType: string,
     date: Date,
-    pages: number,
-    status: number
+    pages: string,
+    status: string
 }

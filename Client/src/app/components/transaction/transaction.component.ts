@@ -12,7 +12,7 @@ import { TransactionService } from 'src/app/services/transaction.service';
 export class TransactionComponent implements OnInit {
 
   transactions: Array<Transaction> = [];
-  displayTransactions: Array<Transaction> = [];
+  // displayTransactions: Array<Transaction> = [];
   amountColor: string = '';
   startDate!: Date;
   endDate!: Date;

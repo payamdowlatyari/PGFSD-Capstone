@@ -34,6 +34,18 @@ public class CheckServiceImpl implements CheckService{
 	}
 	
 	@Override
+	public CheckBookRequest getCheckBookRequests(String accountNumber) {
+		List<CheckBookRequest> list = this.checkBookRequestRepository.findAll();
+//		List<CheckBookRequest> newlist = null;
+		for(CheckBookRequest check : list) {
+			if(check.getAccountNumber().equals(accountNumber)) {
+					return check;
+			}
+		}
+		return null;
+	}
+	
+	@Override
 	public String isCheckBookRequested(String accountNumber) {
 		List<CheckBookRequest> list = this.checkBookRequestRepository.findAll();
 		for(CheckBookRequest temp : list) {

@@ -7,17 +7,20 @@
             <table class="table">
                 <tr class="table-active">
                     <th scope="col" class="border-right">Transaction Number</th>
-                    <th scope="col">Transaction Date</th>
-                    <th scope="col">Transaction Amount</th>   
+                    <th scope="col">Date</th>
+                    <th scope="col">Amount</th>  
+                    <th scope="col">Message</th>   
                 </tr>
-                <tr *ngFor="let transaction of displayTransactions">
-                    <td scope="row" class="border-right">{{transaction['id']}}</td>
-                    <td>{{generateDate(transaction['date'])}}</td>
-                    <td class="{{amountColor}} font-weight-bold">₹ {{generateTransferAmount(
-                        transaction['amount'],
-                        transaction['sender'],
-                        transaction['receiver']
-                        )}}</td>
+                <tr *ngFor="let item of transactions">
+                    <td scope="row" class="border-right">{{item['tid']}}</td>
+                    <td>{{item['date']}}</td>
+                    <td><span>USD</span> {{item['amount']}}</td>
+                    <td>{{item['message']}}</td>
+                    <!-- <td class="{{amountColor}} font-weight-bold">₹ {{generateTransferAmount(
+                        item['amount'],
+                        item['accountNumber'],
+                        item['toAccountNumber']
+                        )}}</td> -->
                 </tr>
             </table>
         </div>

@@ -31,7 +31,7 @@ public class AdminController {
 		@Autowired
 		private CheckService checkService; 
 		
-		
+		@Autowired
 		private TransactionDetailsService transactionDetailsService;
 		
 		@GetMapping("/list")
@@ -69,8 +69,9 @@ public class AdminController {
 			return message;
 		}
 		
-		@GetMapping("/admin/transactions")
+		@GetMapping("/transactions")
 		public List<TransactionDetails> getPendingTransactions() {
+			System.out.println(transactionDetailsService.get());
 			return this.transactionDetailsService.get();
 		}
 		

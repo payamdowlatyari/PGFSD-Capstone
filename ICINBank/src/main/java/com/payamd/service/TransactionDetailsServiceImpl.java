@@ -15,10 +15,10 @@ import com.payamd.repository.TransactionDetailsRepository;
 public class TransactionDetailsServiceImpl implements TransactionDetailsService{
 	
 	@Autowired
-	TransactionDetailsRepository transactionDetailsRepository;
+	private TransactionDetailsRepository transactionDetailsRepository;
 	
 	@Autowired
-	AccountRepository accountRepository;
+	private AccountRepository accountRepository;
 	
 
 	@Override
@@ -79,5 +79,10 @@ public class TransactionDetailsServiceImpl implements TransactionDetailsService{
 
 		this.transactionDetailsRepository.save(finalTransaction);
 		return "Transfer details: " + message;
+	}
+
+	@Override
+	public List<TransactionDetails> getById(String id) {
+		return transactionDetailsRepository.getTransactionsByAccountNumber(id);
 	}
 }

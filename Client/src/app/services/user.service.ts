@@ -40,16 +40,12 @@ export class UserService {
     return this.http.post<Message>(`${this.apiServerUrl}/user/checkrequest/${id}`,pages)
   }
 
-  requestCheckBooks(id: string) : Observable<Array<Check>> {
-    return this.http.get<Array<Check>>(`${this.apiServerUrl}/user/checkrequests/${id}`)
-  }
+  // getCheckBookRequests() : Observable<Array<any>> {
+  //   return this.http.get<Array<any>>(`${this.apiServerUrl}/admin/checkrequests`);
+  // }
 
-  getCheckBookRequests() : Observable<Array<any>> {
-    return this.http.get<Array<any>>(`${this.apiServerUrl}/admin/checkrequests`);
-  }
-
-  acceptCheckBookRequest(id: string) : Observable<Message> {
-    return this.http.get<Message>(`${this.apiServerUrl}/admin/checkrequests/accept/${id}`);
-  }
+  // acceptCheckBookRequest(id: string) : Observable<Message> {
+  //   return this.http.get<Message>(`${this.apiServerUrl}/admin/checkrequests/accept/${id}`);
+  // }
 
 }

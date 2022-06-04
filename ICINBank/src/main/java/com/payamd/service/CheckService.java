@@ -9,4 +9,5 @@ public interface CheckService {
 	public String isCheckBookRequested(String accountNumber);
 	public String changeCheckBookStatus(String accountNumber);
 	public List<CheckBookRequest> getPendingCheckBookRequests();
+	public CheckBookRequest getCheckBookRequests(String accountNumber); 
 }

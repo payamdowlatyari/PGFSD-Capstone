@@ -10,19 +10,20 @@ import { TransactionService } from 'src/app/services/transaction.service';
 })
 export class TransactionManagementComponent implements OnInit {
 
-  transaction: Array<Transaction> = [];
-  toShowTransaction: Array<Transaction> = [];
+  transactions: Array<Transaction> = [];
+  // toShowTransaction: Array<Transaction> = [];
 
   constructor(
     private transactionService: TransactionService,
-    private router: Router
+    // private router: Router
   ) { }
 
   ngOnInit(): void {
     this.transactionService.getAllTransactions()
       .subscribe(
         transaction => {
-          this.transaction = transaction;
+          console.log(transaction);
+          this.transactions = transaction;
         },
         error => console.log(error)
       )
@@ -40,7 +41,7 @@ export class TransactionManagementComponent implements OnInit {
             .subscribe(
               transaction => {
                 alert(message.message);
-                this.transaction = transaction;
+                this.transactions = transaction;
               },
               error => console.log(error)
             )

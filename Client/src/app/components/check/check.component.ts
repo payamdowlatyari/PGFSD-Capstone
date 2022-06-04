@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
 import { Check } from 'src/app/models/check';
 import { User } from 'src/app/models/user';
+import { AccountService } from 'src/app/services/account.service';
 import { DataService } from 'src/app/services/data.service';
 import { UserService } from 'src/app/services/user.service';
+import { AccountComponent } from '../account/account.component';
 
 @Component({
   selector: 'app-check',
@@ -20,7 +23,7 @@ export class CheckComponent implements OnInit {
   status: number = 0; 
   accountType: string = "Checking";
 
-  checkBooks: Array<Check> | undefined;
+  checkBooks: Array<Check> = [];
   toShowChecks: Array<Check> | undefined;
   allowBack: boolean = false;
   allowNext: boolean = false;
@@ -29,21 +32,22 @@ export class CheckComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private userService: UserService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private accountService: AccountService
   ) { }
 
   ngOnInit(): void {
-    this.userService.getUser(this.dataService.getUser().id)
+    this.accountService.requestCheckBooks(this.dataService.getUser().id)
       .subscribe(
-        user => {
+        checkBooks => {
 
-          if (this.checkBooks != undefined && this.checkBooks.length > 5) {
-            this.allowNext = true;
-            this.toShowChecks = this.checkBooks.slice(this.current, this.current + 5);
-          }
-          this.accountNumber = user.id;
-          this.checkBooks = this.checkBooks;
-          this.current = 0;
+          // if (this.checkBooks != undefined && this.checkBooks.length > 5) {
+          //   this.allowNext = true;
+          //   this.toShowChecks = this.checkBooks.slice(this.current, this.current + 5);
+          // }
+          console.log(checkBooks)
+          this.checkBooks = checkBooks;
+          // this.current = 0;
         },
         error => console.log(error)
       )
@@ -84,8 +88,7 @@ export class CheckComponent implements OnInit {
   // }  as Check;
 
   generateDate(date: Date): string {
-    let myDate = `${date}`.slice(0, 10);
-    return myDate;
+    return `${date}`.slice(0, 10);
   }
 
   generateStatus(code: number): string {
@@ -121,15 +124,15 @@ export class CheckComponent implements OnInit {
       .subscribe(
         message => {
           alert(message);
-          this.userService.requestCheckBooks(this.dataService.getUser().id)
+          this.accountService.requestCheckBooks(this.dataService.getUser().id)
             .subscribe(
               check => {
-                if (check.length > 5) {
-                  this.allowNext = true;
-                }
+                // if (check.length > 5) {
+                //   this.allowNext = true;
+                // }
               
                 this.checkBooks = check;
-                this.toShowChecks = this.checkBooks.slice(this.current, this.current + 5);
+                // this.toShowChecks = this.checkBooks.slice(this.current, this.current + 5);
             
               },
               error => console.log(error)
