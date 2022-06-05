@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import com.payamd.entity.TransactionDetails;
 
-@Repository(value = "transactionDetails")
+@Repository(value = "transaction_details")
 public interface TransactionDetailsRepository extends JpaRepository <TransactionDetails, Long>{
 
 	@Query(
-			value = "SELECT * from transactionDetails where acc_no like ?1 order by date desc",
+			value = "SELECT * from transaction_details where acc_no like ?1 order by date desc",
 			nativeQuery = true)
 	List<TransactionDetails> getTransactionsByAccountNumber(String accountNumber);
 }

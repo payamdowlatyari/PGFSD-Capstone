@@ -11,7 +11,6 @@ public interface AdminService {
 	Admin get(Long id);
 	String exists(String username, String password);
 	Admin getAdmin(String username);
-
 	Admin authenticate(String username, String password);
 
 }

@@ -15,7 +15,6 @@ import com.payamd.entity.Admin;
 import com.payamd.entity.CheckBookRequest;
 import com.payamd.entity.Message;
 import com.payamd.entity.TransactionDetails;
-import com.payamd.entity.User;
 import com.payamd.service.AdminService;
 import com.payamd.service.CheckService;
 import com.payamd.service.TransactionDetailsService;
@@ -75,10 +74,4 @@ public class AdminController {
 			return this.transactionDetailsService.get();
 		}
 		
-//		@GetMapping("/admin/allow/transaction/{id}")
-//		public Message permitTransaction(@PathVariable int id) {
-//			Message message = new Message(this.transactionDetailsService.updateTransaction(id));
-//			return message;
-//		}
-	   
 }

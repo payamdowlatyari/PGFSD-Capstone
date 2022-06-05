@@ -75,14 +75,11 @@ INSERT INTO user VALUES ('101','Payam','Dowlatyari','pdowlatyari@gmail.com','916
 INSERT INTO user VALUES ('102','Mina','Fanaian','minafanaian@gmail.com','9169126468','33 Tehama St','user','user','user','USD','1996-06-13');
 INSERT INTO user VALUES ('103','Sam','Black','sam@gmail.com','1234567890','222 Blue St','sam123','sam123','user','USD','1999-09-27');
 
-
 INSERT INTO account VALUES('101','1001','Checking','2000');
 INSERT INTO account VALUES('102','1002','Checking','3000');
 
 INSERT INTO transfer VALUES('1101','101','1001','1002','100','2022-05-05');
 INSERT INTO transfer VALUES('1102','102','1002','1001','200','2022-06-05');
-
-INSERT INTO admin VALUES('1','admin','admin');
 
 INSERT INTO check_book_request VALUES('101','101','Checking','2022-05-05', '50', '0');
 
@@ -90,3 +87,4 @@ INSERT INTO transaction_details VALUES('1101','101','100','2022-05-05','grocery'
 INSERT INTO transaction_details VALUES('1102','102','200','2022-05-25','grocery','101');
 INSERT INTO transaction_details VALUES('1103','101','102','2022-05-15','tools','100');
 
+INSERT INTO admin VALUES('1','admin','admin');

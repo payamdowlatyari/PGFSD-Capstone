@@ -39,7 +39,7 @@ public class AccountServiceImpl implements AccountService{
 				 }   	
 				return null;
 		}
-//
+
 	@Override
 	public String createNewAccount(Account account, long id) {
         if (!userRepository.findById(id).isPresent())  return "User does not exist";
@@ -89,9 +89,6 @@ public class AccountServiceImpl implements AccountService{
 		Account account = getAccount(accountNumber);
 		account.setBalance(balance);		
 		return updateAccount(account, account.getId());
-
 	}
-
-	 
 
 }

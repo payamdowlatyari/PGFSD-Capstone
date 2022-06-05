@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminDataService } from 'src/app/services/admin-data.service';
 import { AdminService } from 'src/app/services/admin.service';
-import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-admin-login',

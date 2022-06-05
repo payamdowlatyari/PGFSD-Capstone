@@ -26,6 +26,7 @@ public class TransactionDetailsServiceImpl implements TransactionDetailsService{
 		return transactionDetailsRepository.findAll();
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public String addTransaction(TransactionDetails transaction) {
 

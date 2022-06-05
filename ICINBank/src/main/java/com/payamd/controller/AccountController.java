@@ -18,7 +18,6 @@ import java.util.*;
 import com.payamd.entity.Account;
 import com.payamd.entity.CheckBookRequest;
 import com.payamd.entity.TransactionDetails;
-import com.payamd.entity.User;
 import com.payamd.service.AccountService;
 import com.payamd.service.CheckService;
 import com.payamd.service.TransactionDetailsService;

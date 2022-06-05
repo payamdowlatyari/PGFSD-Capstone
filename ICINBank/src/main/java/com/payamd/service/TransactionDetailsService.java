@@ -1,8 +1,6 @@
 package com.payamd.service;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.payamd.entity.TransactionDetails;
 
 public interface TransactionDetailsService {

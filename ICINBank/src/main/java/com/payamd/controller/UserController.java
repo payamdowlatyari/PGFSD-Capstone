@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.payamd.entity.CheckBookRequest;
 import com.payamd.entity.Message;
 import com.payamd.entity.User;
 import com.payamd.service.CheckService;

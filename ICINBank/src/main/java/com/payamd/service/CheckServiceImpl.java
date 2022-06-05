@@ -36,7 +36,6 @@ public class CheckServiceImpl implements CheckService{
 	@Override
 	public CheckBookRequest getCheckBookRequests(String accountNumber) {
 		List<CheckBookRequest> list = this.checkBookRequestRepository.findAll();
-//		List<CheckBookRequest> newlist = null;
 		for(CheckBookRequest check : list) {
 			if(check.getAccountNumber().equals(accountNumber)) {
 					return check;
@@ -71,13 +70,6 @@ public class CheckServiceImpl implements CheckService{
 		} 
 		return "There is already a pending request for - "+accountNumber;
 	}
-
-//	@Override
-//	public String requestCheckBook(String accountNumber) {
-//		
-//		
-//	}
-	
 	
 
 }

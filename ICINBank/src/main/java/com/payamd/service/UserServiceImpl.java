@@ -73,8 +73,7 @@ public class UserServiceImpl implements UserService{
 
 	        return "User created!";
 	    }
-	 
-	 
+	  
 	 	@Override
 		public String update(String password, String newPassword) {
 		  	userRepository.updateUserPassword(newPassword, newPassword);
