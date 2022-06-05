@@ -11,11 +11,9 @@ import { TransactionService } from 'src/app/services/transaction.service';
 export class TransactionManagementComponent implements OnInit {
 
   transactions: Array<Transaction> = [];
-  // toShowTransaction: Array<Transaction> = [];
 
   constructor(
     private transactionService: TransactionService,
-    // private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +31,7 @@ export class TransactionManagementComponent implements OnInit {
     return `${date}`.slice(0, 10);
   }
 
-  allow(id: number) {
+  approve(id: string) {
     this.transactionService.permitTransaction(id.toString())
       .subscribe(
         message => {

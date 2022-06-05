@@ -6,27 +6,21 @@
         <div class="col-md-12 col-lg-12 ml-auto">
             <table class="table">
                 <tr class="table-active">
-                    <th scope="col" class="border-right">Check Book Number</th>
-                    <th scope="col">Account Number</th>
-                    <th scope="col">Account Type</th>
-                    <th scope="col">Number of Pages</th>
+                    <th scope="col" class="border-right">Number</th>           
+                    <th scope="col">Account</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Status</th>
                 </tr>
-                <tr>
-                <!-- <tr *ngFor="let check of checkBooks"> -->
-                    <td scope="row" class="border-right">{{accountNumber}}</td>
-                    <td>{{accountNumber}}</td>
-
-                    <td>{{accountType}}</td>
-                    <td>{{pages}}</td>
-                    <td>{{status}}</td>
+                    <tr *ngFor="let checkBook of checkBooks">
+                        <td scope="row" class="border-right">{{checkBook['id']}}</td>
+                        <td>{{checkBook['accountNumber']}}</td>
+                        <td>{{checkBook['accountType']}}</td>
+                        <td>{{generateDate(checkBook['date'])}}</td>
+                        <td>{{checkBook['status']}}</td>
                 </tr>
             </table>
         </div>
-        <!-- <div class="col-md-12 col-lg-12 d-flex flex-row justify-content-end pr-5 pt-5">
-            <button [disabled]="!allowBack" class="btn btn-light btn-sm mr-2" (click)="onPrev();">Prev</button>
-            <button [disabled]="!allowNext" class="btn btn-light btn-sm" (click)="onNext();">Next</button>
-        </div> -->
     </div>
 </div>
 

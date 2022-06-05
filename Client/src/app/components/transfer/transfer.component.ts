@@ -14,9 +14,6 @@ export class TransferComponent implements OnInit {
 
   toAccountNumber: string = '';
   accountNumber: string = '';
-  // toAccountType: string = '';
-  // accountType: string = '';
-  // isChecked: boolean = false;
   amount: number = 0;
   message: string = '';
   account: Account | undefined;
@@ -40,16 +37,6 @@ export class TransferComponent implements OnInit {
       )
   }
 
-  // changed(event: { target: { checked: any; }; }) {
-  //   if (event.target.checked && this.account) {
-  //     this.isChecked = true;
-  //     this.toAccountNumber = this.account.accountNumber;
-  //   } else {
-  //     this.isChecked = false;
-  //     this.toAccountNumber = '';
-  //   }
-  // }
-
   transferMoney() {
     if (this.toAccountNumber === '' ||
       this.accountNumber === '' ||
@@ -58,42 +45,19 @@ export class TransferComponent implements OnInit {
       return;
     }
 
-    // if (!(this.accountType === 'Savings' || this.accountType === 'Primary')) {
-    //   alert('Wrong Self Account Type! Please type either Savings or Primary only!');
-    //   return;
-    // }
-
-    // if (!(this.toAccountType === 'Savings' || this.toAccountType === 'Primary')) {
-    //   alert('Wrong Transfer Account Type! Please type either Savings or Primary only!');
-    //   return;
-    // }
-
     if (this.account && !(this.accountNumber = this.account.accountNumber)) {
       alert('Account number is wrong!');
       return;
     }
-
-    // if (this.isChecked) {
-    //   if (this.accountType === this.toAccountType) {
-    //     alert('Illegal transaction!');
-    //     return;
-    //   }
-    // }
 
     if (this.account && this.account?.balance < this.amount) {
       alert(`You only have USD ${this.account.balance} in your account\nYou need USD ${Math.round(this.amount - this.account.balance)} more to transfer`);
       return;
     }
 
-    // if (this.accountType === 'Savings' && this.account.accountBalanceSavings < this.amount) {
-    //   alert(`You only have Rs. ${this.account.accountBalanceSavings} in your savings account\nYou need Rs. ${Math.round(this.amount - this.account.accountBalanceSavings)} more to transfer!`);
-    //   return;
-    // }
-
     let transaction = {
       sender: this.accountNumber,
       receiver: this.toAccountNumber,
-      // action: this.accountType,
       amount: this.amount,
       message: this.message
     } as Transaction;
@@ -106,30 +70,11 @@ export class TransferComponent implements OnInit {
       (      error: any) => console.log(error),
       () => {
         this.toAccountNumber = '';
-        // this.toAccountType = '';
         this.accountNumber = '';
-        // this.accountType = '';
         this.amount = 0;
-        // this.isChecked = false;
         this.message = '';
       }
     )
   }
-
-  // selectSelfPrimary(event: { target: { checked: any; }; }) {
-  //   if(event.target.checked) {
-  //     this.accountType = 'Primary';
-  //   } else {
-  //     this.accountType = 'Savings';
-  //   }
-  // }
-
-  // selectSelfSavings(event: { target: { checked: any; }; }) {
-  //   if(event.target.checked) {
-  //     this.accountType = 'Savings';
-  //   } else {
-  //     this.accountType = 'Primary';
-  //   }
-  // }
 
 }

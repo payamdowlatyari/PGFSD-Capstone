@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UserComponent implements OnInit {
 
   users : User[] | undefined;
-  public user : User | undefined;
+  user : User | undefined;
   username: string = '';
   constructor(private userService: UserService , private dataService: DataService){}
 
@@ -22,9 +22,6 @@ ngOnInit(): void {
   this.username = this.user.username;
 
 }
-  // getUserById(id: (id: any) => void) {
-  //   throw new Error('Method not implemented.');
-  // }
 
 public getUsers(): void {
   this.userService.getUsers().subscribe(

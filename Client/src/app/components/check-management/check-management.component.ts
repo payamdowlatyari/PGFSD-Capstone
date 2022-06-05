@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Check } from 'src/app/models/check';
 import { AdminService } from 'src/app/services/admin.service';
-import { DataService } from 'src/app/services/data.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-check-management',

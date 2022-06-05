@@ -9,9 +9,6 @@ import { Transaction } from '../models/transaction';
   providedIn: 'root'
 })
 export class TransactionService {
-  // getFilteredTransactions(accountNumber: any, startDate: Date, endDate: Date) {
-  //   throw new Error('Method not implemented.');
-  // }
 
   private apiServerUrl = environment.apiBaseUrl;
   

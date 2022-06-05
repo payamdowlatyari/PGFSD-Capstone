@@ -12,7 +12,6 @@ import { TransactionService } from 'src/app/services/transaction.service';
 export class TransactionComponent implements OnInit {
 
   transactions: Array<Transaction> = [];
-  // displayTransactions: Array<Transaction> = [];
   amountColor: string = '';
   startDate!: Date;
   endDate!: Date;
@@ -51,28 +50,7 @@ export class TransactionComponent implements OnInit {
     }
     return accountNumber;
   }
-
-  generateTransferAmount(amount: number, from: string, to: string): string {
-    let type = this.generateType(from, to);
-    if (type === 'Debit') {
-      return `${amount} (Dr)`;
-    } else if (type === 'Credit') {
-      return `${amount} (Cr)`;
-    }
-    return `${amount}`;
-  }
-
-  generateType(from: string, to: string): string {
-    let curr_acc = this.dataService.getUser().id;
-    if (to === curr_acc && from === curr_acc) {
-      return '-';
-    }
-    if (to === curr_acc) {
-      return 'Credit';
-    }
-    return 'Debit';
-  }
-
+ 
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       console.log(result);

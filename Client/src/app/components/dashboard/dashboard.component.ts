@@ -18,42 +18,4 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.username = this.dataService.getUser().firstname;
   }
-
-  // userList: Object[] | undefined;
-
-  // constructor(private userService: UserService, private router: Router) {
-  //   this.getUsers();
-  // }
-
-  // getUsers(){
-  //   this.userService.getUsers().subscribe(
-  //     (      res: any) => {
-  //       this.userList =JSON.parse(JSON.parse(JSON.stringify(res))._body);
-  //     },
-  //     (      err: any) => console.log(err)
-  //   )
-  // }
-
-  // onSelectPrimary(username: string){
-  //   this.router.navigate(['/primaryTransaction',username]);
-  // }
-
-  // onSelectSavings(username: string){
-  //   this.router.navigate(['/savingsTransaction',username]);
-  // }
-
-  // enableUser(username: string){
-  //   this.userService.enableUser(username).subscribe();
-  //   location.reload();
-  // }
-
-  // disableUser(username: string){
-  //   this.userService.disableUser(username).subscribe();
-  //   location.reload();
-  // }
-
-  // ngOnInit() {
-  // }
-
-
 }

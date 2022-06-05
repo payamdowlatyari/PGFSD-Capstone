@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -19,7 +18,7 @@ export class AdminComponent implements OnInit {
   isLoading: boolean | undefined;
   userId: number | undefined;
 
-  constructor (private loginService: LoginService , private router: Router) {
+  constructor (private loginService: LoginService) {
     if(localStorage.getItem('PortalAdminHasLoggedIn') == '' || localStorage.getItem('PortalAdminHasLoggedIn') == null) {
       this.dashboard = false;
     } else {
@@ -45,19 +44,6 @@ export class AdminComponent implements OnInit {
       return "";
     }
   }
-
-
-  // logout(){
-  //   this.loginService.logout().subscribe(
-  //     res => {
-  //              this.router.navigate(['/']);     
-  //     },
-  //     err => console.log(err)
-  //     );
-  //     location.reload();
-  //    localStorage.setItem('PortalAdminHasLoggedIn', '');
-  //   this.dashboard=false;
-  // }
 
   ngOnInit() {}
 

@@ -40,25 +40,25 @@ FOREIGN KEY(id) REFERENCES user(id)
 );
 
 
-CREATE TABLE transactionDetails (
+CREATE TABLE transaction_details (
 tid BIGINT(10) NOT NULL,
 acc_no VARCHAR(10) NOT NULL,
-to_acc VARCHAR(10) NOT NULL,
-message VARCHAR(50),
 amount decimal(19,2) DEFAULT NULL,
 date DATE,
+message VARCHAR(50),
+to_acc VARCHAR(10) NOT NULL,
 PRIMARY KEY(tid),
 FOREIGN KEY(tid) REFERENCES transfer(tid)
 );
 
 
-CREATE TABLE checkBookRequest(
+CREATE TABLE check_book_request(
 id BIGINT(10) NOT NULL,
-req_status INT(1),
 acc_no VARCHAR(10),
 acc_type VARCHAR(10),
-no_pages VARCHAR(10),
 date DATE,
+no_pages VARCHAR(10),
+req_status INT(1),
 PRIMARY KEY(id),
 FOREIGN KEY(id) REFERENCES user(id)
 );
@@ -82,11 +82,10 @@ INSERT INTO account VALUES('102','1002','Checking','3000');
 INSERT INTO transfer VALUES('1101','101','1001','1002','100','2022-05-05');
 INSERT INTO transfer VALUES('1102','102','1002','1001','200','2022-06-05');
 
-INSERT INTO admin VALUES('admin','admin');
+INSERT INTO admin VALUES('1','admin','admin');
 
 INSERT INTO check_book_request VALUES('101','101','Checking','2022-05-05', '50', '0');
 
-INSERT INTO transactionDetails VALUES('1101','101','102','grocery','50','2022-05-05');
 INSERT INTO transaction_details VALUES('1101','101','100','2022-05-05','grocery','50');
 INSERT INTO transaction_details VALUES('1102','102','200','2022-05-25','grocery','101');
 INSERT INTO transaction_details VALUES('1103','101','102','2022-05-15','tools','100');
